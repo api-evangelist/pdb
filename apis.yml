@@ -88,6 +88,8 @@ apis:
         url: https://search.rcsb.org/redoc/index.html
       - type: GettingStarted
         url: https://www.rcsb.org/docs/programmatic-access/web-apis-overview
+      - type: OpenAPI
+        url: openapi/rcsb-pdb-search-api.json
     contact:
       - type: Email
         url: mailto:info@rcsb.org
@@ -111,6 +113,8 @@ apis:
     properties:
       - type: Documentation
         url: https://models.rcsb.org
+      - type: OpenAPI
+        url: openapi/rcsb-pdb-model-server-api.json
     contact:
       - type: Email
         url: mailto:info@rcsb.org
@@ -132,6 +136,8 @@ apis:
     properties:
       - type: Documentation
         url: https://maps.rcsb.org
+      - type: OpenAPI
+        url: openapi/rcsb-pdb-volume-server-api.json
     contact:
       - type: Email
         url: mailto:info@rcsb.org
@@ -187,6 +193,8 @@ apis:
         url: mailto:info@rcsb.org
 
 common:
+  - type: JSONLd
+    url: json-ld/pdb.json
   - type: Website
     url: https://www.rcsb.org
   - type: Documentation

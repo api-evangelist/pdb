@@ -1,0 +1,96 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "api": "https://pending.schema.org/WebAPI",
+    "openapi": "https://spec.openapis.org/oas/v3.0.0"
+  },
+  "@type": "Organization",
+  "@id": "https://www.rcsb.org",
+  "name": "RCSB PDB",
+  "description": "RCSB Protein Data Bank (RCSB PDB) is a scientific data resource providing free, open access to the 3D structural data of biological macromolecules including proteins, nucleic acids, and complex assemblies.",
+  "url": "https://www.rcsb.org",
+  "logo": "https://www.rcsb.org/img/rcsb_logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@rcsb.org",
+    "contactType": "technical support"
+  },
+  "sameAs": [
+    "https://github.com/rcsb"
+  ],
+  "hasPart": [
+    {
+      "@type": "WebAPI",
+      "@id": "https://data.rcsb.org",
+      "name": "RCSB PDB Data API",
+      "description": "Provides structured access to the complete RCSB PDB holdings via REST and GraphQL interfaces.",
+      "documentation": "https://data.rcsb.org/redoc/index.html",
+      "endpointURL": "https://data.rcsb.org/rest/v1/core"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://search.rcsb.org",
+      "name": "RCSB PDB Search API",
+      "description": "Full-featured search API for locating PDB identifiers matching complex query conditions including text, sequence, structure, and chemical searches.",
+      "documentation": "https://search.rcsb.org/redoc/index.html",
+      "endpointURL": "https://search.rcsb.org/rcsbsearch/v2/query",
+      "schemaVersion": "3.0.1",
+      "softwareVersion": "2.6.0",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://search.rcsb.org/rcsbsearch/v2/query?json={search_query}",
+        "query-input": "required name=search_query"
+      }
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://models.rcsb.org",
+      "name": "RCSB PDB ModelServer API",
+      "description": "Provides on-demand access to subsets of macromolecular model data stored in PDBx/mmCIF format.",
+      "documentation": "https://models.rcsb.org",
+      "endpointURL": "https://models.rcsb.org/v1",
+      "schemaVersion": "3.0.0",
+      "softwareVersion": "0.9.12"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://maps.rcsb.org",
+      "name": "RCSB PDB VolumeServer API",
+      "description": "Delivers subsets of volumetric electron density and cryo-EM map data associated with PDB entries.",
+      "documentation": "https://maps.rcsb.org",
+      "endpointURL": "https://maps.rcsb.org",
+      "schemaVersion": "3.0.0",
+      "softwareVersion": "0.9.7"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://sequence-coordinates.rcsb.org",
+      "name": "RCSB PDB Sequence Coordinates API",
+      "description": "GraphQL service providing sequence-level alignments between structural databases and external sequence resources.",
+      "documentation": "https://sequence-coordinates.rcsb.org",
+      "endpointURL": "https://sequence-coordinates.rcsb.org/graphql"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://alignment.rcsb.org",
+      "name": "RCSB PDB Structure Alignment API",
+      "description": "Asynchronous REST API that performs programmatic structure alignment calculations between PDB entries or user-supplied coordinate files.",
+      "documentation": "https://alignment.rcsb.org/api-reference.html",
+      "endpointURL": "https://alignment.rcsb.org"
+    }
+  ],
+  "keywords": [
+    "Structural Biology",
+    "Proteomics",
+    "Bioinformatics",
+    "Genomics",
+    "Life Sciences",
+    "Open Data",
+    "Research",
+    "Macromolecules",
+    "Crystallography",
+    "NMR"
+  ],
+  "license": "https://www.rcsb.org/pages/policies",
+  "isAccessibleForFree": true
+}
