@@ -1,0 +1,85 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: RCSB PDB
+providerId: pdb
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Structural Biology
+  - Proteomics
+  - Bioinformatics
+  - Life Sciences
+  - Open Data
+  - Research
+description: >-
+  RCSB PDB APIs are freely available to all researchers and developers with no
+  subscription fee or API key required. All APIs implement rate limiting to ensure
+  fair access. Static file downloads (HTTPS, rsync) are unrestricted. Exceeding
+  API rate limits results in HTTP 429 responses; clients should implement exponential
+  backoff and respect Retry-After headers.
+sources:
+  - https://www.rcsb.org/docs/programmatic-access/web-apis-overview
+plans:
+  - id: pdb-open
+    name: Open Access
+    type: open
+    description: >-
+      All RCSB PDB APIs are freely available to any researcher or developer worldwide
+      at no cost and with no registration or API key required. Rate limits are enforced
+      to protect shared infrastructure; a starting rate of a few requests per second
+      is recommended for API endpoints. Static file downloads via HTTPS or rsync are
+      not rate-limited.
+    entries:
+      - label: API Requests
+        description: >-
+          Requests to data, search, model, volume, sequence coordinates, and alignment
+          APIs. Rate limits are in place; a sustained rate of a few requests per second
+          is recommended. Exceeding limits returns HTTP 429.
+        name: api_requests
+        type: rate
+        metric: requests_per_second
+        limit: 10
+        timeFrame: second
+        geo: global
+        domains:
+          - https://data.rcsb.org
+          - https://search.rcsb.org
+          - https://models.rcsb.org
+          - https://maps.rcsb.org
+          - https://sequence-coordinates.rcsb.org
+          - https://alignment.rcsb.org
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: File Downloads
+        description: >-
+          Bulk file downloads via https://files.wwpdb.org or rsync://rsync.rcsb.org
+          are unrestricted in volume. Polite harvesting practices are expected.
+        name: file_downloads
+        type: unlimited
+        metric: bytes
+        limit: -1
+        timeFrame: unlimited
+        geo: global
+        domains:
+          - https://files.wwpdb.org
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Data API (REST)
+      - name: Data API (GraphQL)
+      - name: Search API
+      - name: ModelServer API
+      - name: VolumeServer API
+      - name: Sequence Coordinates API
+      - name: Structure Alignment API
+      - name: Bulk File Downloads (HTTPS + rsync)
+      - name: Python Client (py-rcsb-api)
+      - name: JavaScript/TypeScript Client (rcsb-api-tools)
+      - name: Community Mailing List
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

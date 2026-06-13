@@ -1,0 +1,185 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: RCSB PDB
+providerId: pdb
+publisherName: RCSB PDB (Research Collaboratory for Structural Bioinformatics)
+serviceCategory: Open Scientific Data API
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Structural Biology
+  - Bioinformatics
+  - Life Sciences
+  - Open Data
+  - Research
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  RCSB PDB APIs are freely available with no direct monetary cost to the consumer.
+  FinOps considerations center on the engineering and infrastructure cost of consuming
+  these APIs — egress bandwidth, compute for processing large structure files, storage
+  for local archives, and developer time. Organizations integrating PDB data at scale
+  should track these indirect costs and optimize for efficient access patterns.
+sources:
+  - https://www.rcsb.org/docs/programmatic-access/web-apis-overview
+  - https://www.rcsb.org/docs/programmatic-access
+principles:
+  - name: Visibility
+    description: >-
+      While RCSB PDB APIs carry no subscription cost, make internal consumption visible:
+      track API call volumes, downloaded data volumes, compute used for structure
+      processing, and storage consumed by local PDB archives.
+  - name: Allocation
+    description: >-
+      Tag API consumption and downstream storage to the research project, team, or
+      application consuming the data so that institutional IT and cloud infrastructure
+      costs can be attributed correctly.
+  - name: Optimization
+    description: >-
+      Use rsync for full or incremental archive replication rather than per-file HTTP
+      fetches. Use the Data API and Search API to retrieve only required records rather
+      than bulk downloading the entire archive. Cache frequently accessed structures
+      locally to avoid redundant requests.
+  - name: Accountability
+    description: >-
+      Assign responsibility for data pipeline costs to the research or engineering team
+      consuming the data. Monitor egress and storage growth on a monthly cadence and
+      review access patterns quarterly.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Workload Optimization
+      - Cloud Sustainability
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Onboarding Workloads
+billingModel:
+  pricingCategory: Free / Open Data
+  billingFrequency: N/A
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+  chargeFrequency: N/A
+  notes: >-
+    No monetary charges from RCSB PDB. Internal costs arise from cloud egress,
+    compute, and storage consumed when integrating PDB data into research pipelines.
+focusColumns:
+  ServiceName: RCSB PDB
+  ServiceCategory: Open Scientific Data API
+  ProviderName: RCSB PDB
+  PublisherName: Research Collaboratory for Structural Bioinformatics
+  InvoiceIssuerName: N/A (free resource)
+  PricingCategory: Free
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of API requests made across all RCSB PDB API endpoints
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - consumer
+      - environment
+  - name: data_download_bytes
+    description: Total bytes downloaded from files.wwpdb.org or via rsync
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - file_type
+      - consumer
+      - environment
+  - name: structure_files_cached
+    description: Count of structure coordinate files maintained in a local cache
+    unit: file
+    aggregation: max
+    dimensions:
+      - file_format
+      - consumer
+apis:
+  - name: RCSB PDB Data API
+    baseURL: https://data.rcsb.org/rest/v1/core
+    tags:
+      - Structural Biology
+      - Protein Data
+      - REST
+      - GraphQL
+    serviceName: RCSB PDB Data API
+    serviceCategory: Open Scientific Data API
+  - name: RCSB PDB Search API
+    baseURL: https://search.rcsb.org/rcsbsearch/v2/query
+    tags:
+      - Search
+      - Sequence
+      - Structure
+      - Chemical
+    serviceName: RCSB PDB Search API
+    serviceCategory: Open Scientific Data API
+  - name: RCSB PDB ModelServer API
+    baseURL: https://models.rcsb.org
+    tags:
+      - Macromolecular Models
+      - mmCIF
+    serviceName: RCSB PDB ModelServer API
+    serviceCategory: Open Scientific Data API
+  - name: RCSB PDB VolumeServer API
+    baseURL: https://maps.rcsb.org
+    tags:
+      - Electron Density
+      - Cryo-EM
+      - Volumetric Data
+    serviceName: RCSB PDB VolumeServer API
+    serviceCategory: Open Scientific Data API
+  - name: RCSB PDB Sequence Coordinates API
+    baseURL: https://sequence-coordinates.rcsb.org/graphql
+    tags:
+      - Sequence Alignment
+      - UniProt
+      - GraphQL
+    serviceName: RCSB PDB Sequence Coordinates API
+    serviceCategory: Open Scientific Data API
+  - name: RCSB PDB Structure Alignment API
+    baseURL: https://alignment.rcsb.org
+    tags:
+      - Structure Alignment
+      - Computational
+    serviceName: RCSB PDB Structure Alignment API
+    serviceCategory: Open Scientific Data API
+unitEconomics:
+  - name: Cost per 1K API Requests (internal infra)
+    metric: internal_infra_cost / (api_requests / 1000)
+    target: minimize
+  - name: Cost per GB Downloaded
+    metric: egress_cost / data_download_gb
+    target: minimize
+  - name: Structures Cached per GB Storage
+    metric: structure_files_cached / storage_gb
+    target: maximize
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

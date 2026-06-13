@@ -1,0 +1,112 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: RCSB PDB
+providerId: pdb
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Structural Biology
+  - Bioinformatics
+  - Life Sciences
+  - Open Data
+  - Rate Limiting
+description: >-
+  RCSB PDB APIs implement rate limiting to ensure fair access across all users.
+  Static file downloads (https://files.wwpdb.org, rsync://rsync.rcsb.org) are
+  not rate-limited. All other API services return HTTP 429 when a client exceeds
+  the allowed request rate. RCSB PDB recommends starting at a few requests per
+  second and adjusting based on observed 429 responses. Exact numeric ceilings
+  are not published; clients should implement polite harvesting patterns.
+sources:
+  - https://www.rcsb.org/docs/programmatic-access/web-apis-overview
+notes: >-
+  Published guidance states "a few requests per second" as a recommended starting
+  rate. No explicit numeric per-second or per-minute ceiling is documented.
+  Clients must handle 429 with backoff.
+responseCodes:
+  throttled: 429
+headers:
+  retryAfter: Retry-After
+limits:
+  - name: Data API Default
+    scope: client
+    metric: requests-per-second
+    limit: 10
+    notes: >-
+      Recommended starting rate; actual ceiling undisclosed. Applies to
+      https://data.rcsb.org REST and GraphQL endpoints.
+    applies:
+      - RCSB PDB Data API
+
+  - name: Search API Default
+    scope: client
+    metric: requests-per-second
+    limit: 10
+    notes: >-
+      Recommended starting rate; actual ceiling undisclosed. Applies to
+      https://search.rcsb.org/rcsbsearch/v2/query.
+    applies:
+      - RCSB PDB Search API
+
+  - name: ModelServer API Default
+    scope: client
+    metric: requests-per-second
+    limit: 10
+    notes: Recommended starting rate; actual ceiling undisclosed.
+    applies:
+      - RCSB PDB ModelServer API
+
+  - name: VolumeServer API Default
+    scope: client
+    metric: requests-per-second
+    limit: 10
+    notes: Recommended starting rate; actual ceiling undisclosed.
+    applies:
+      - RCSB PDB VolumeServer API
+
+  - name: Sequence Coordinates API Default
+    scope: client
+    metric: requests-per-second
+    limit: 10
+    notes: Recommended starting rate; actual ceiling undisclosed.
+    applies:
+      - RCSB PDB Sequence Coordinates API
+
+  - name: Structure Alignment API Default
+    scope: client
+    metric: requests-per-second
+    limit: 10
+    notes: Asynchronous job submission; recommended starting rate undisclosed.
+    applies:
+      - RCSB PDB Structure Alignment API
+
+  - name: File Downloads (Unrestricted)
+    scope: client
+    metric: unlimited
+    limit: -1
+    notes: >-
+      Bulk downloads via https://files.wwpdb.org or rsync://rsync.rcsb.org
+      are not rate-limited; polite harvesting is expected.
+    applies:
+      - RCSB PDB File Downloads
+
+policies:
+  - name: Backoff Strategy
+    description: >-
+      Implement exponential backoff with jitter. Honor the Retry-After header
+      when present in HTTP 429 responses before retrying.
+  - name: Polite Harvesting
+    description: >-
+      For large-scale or batch workloads spread requests over time and prefer
+      off-peak hours. Consider rsync for full archive replication rather than
+      scraping the HTTP API.
+  - name: Fair Use
+    description: >-
+      All APIs are freely shared infrastructure. Sustained high-volume usage
+      that degrades service for other users may result in temporary blocks
+      beyond documented rate limits.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
