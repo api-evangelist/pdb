@@ -1,0 +1,1265 @@
+"""
+RCSB Protein Data Bank GraphQL API Schema
+Endpoint: https://data.rcsb.org/graphql
+Source: live introspection 2026-06-14
+Total user-defined types: 323 (317 objects, 6 scalars)
+"""
+
+scalar Date
+scalar Float
+scalar Int
+scalar String
+scalar Boolean
+scalar ObjectScalar
+
+"""Query root"""
+type Query {
+  """Get entry given the id."""
+  entry(entry_id: String!): CoreEntry
+
+  """Get a list of entries given a list of IDs."""
+  entries(entry_ids: [String!]!): [CoreEntry]
+
+  """Get an assembly given the ENTRY ID and ASSEMBLY ID."""
+  assembly(entry_id: String!, assembly_id: String!): CoreAssembly
+
+  """Get a list of assemblies given the list of ASSEMBLY IDs."""
+  assemblies(assembly_ids: [String!]!): [CoreAssembly]
+
+  """Get a polymer entity, given the ENTRY ID and ENTITY ID."""
+  polymer_entity(entry_id: String!, entity_id: String!): CorePolymerEntity
+
+  """Get a list of polymer entities given a list of ENTITY IDs."""
+  polymer_entities(entity_ids: [String!]!): [CorePolymerEntity]
+
+  """Get a non-polymer entity, given the ENTRY ID and ENTITY ID."""
+  nonpolymer_entity(entry_id: String!, entity_id: String!): CoreNonpolymerEntity
+
+  """Get a list of non-polymer entities given a list of ENTITY IDs."""
+  nonpolymer_entities(entity_ids: [String!]!): [CoreNonpolymerEntity]
+
+  """Get a branched entity, given the ENTRY ID and ENTITY ID."""
+  branched_entity(entry_id: String!, entity_id: String!): CoreBranchedEntity
+
+  """Get a list of branched entities given a list of ENTITY IDs."""
+  branched_entities(entity_ids: [String!]!): [CoreBranchedEntity]
+
+  """Get a polymer entity instance (chain), given the ENTRY ID and ASYM ID."""
+  polymer_entity_instance(entry_id: String!, asym_id: String!): CorePolymerEntityInstance
+
+  """Get a list of polymer entity instances (chains), given the list of INSTANCE IDs."""
+  polymer_entity_instances(instance_ids: [String!]!): [CorePolymerEntityInstance]
+
+  """Get a non-polymer entity instance (chain), given the ENTRY ID and ASYM ID."""
+  nonpolymer_entity_instance(entry_id: String!, asym_id: String!): CoreNonpolymerEntityInstance
+
+  """Get a list of non-polymer entity instances (chains), given the list of INSTANCE IDs."""
+  nonpolymer_entity_instances(instance_ids: [String!]!): [CoreNonpolymerEntityInstance]
+
+  """Get a branched entity instance (chain), given the ENTRY ID and ASYM ID."""
+  branched_entity_instance(entry_id: String!, asym_id: String!): CoreBranchedEntityInstance
+
+  """Get a list of branched entity instances (chains), given the list of INSTANCE IDs."""
+  branched_entity_instances(instance_ids: [String!]!): [CoreBranchedEntityInstance]
+
+  """Get a pairwise polymeric interface given the ENTRY ID, ASSEMBLY ID, and INTERFACE ID."""
+  interface(entry_id: String!, assembly_id: String!, interface_id: String!): CoreInterface
+
+  """Get a list of pairwise polymeric interfaces given a list of INTERFACE IDs."""
+  interfaces(interface_ids: [String!]!): [CoreInterface]
+
+  """Get a chemical component given the CHEMICAL COMPONENT ID."""
+  chem_comp(comp_id: String!): CoreChemComp
+
+  """Get a list of chemical components given the list of CHEMICAL COMPONENT IDs."""
+  chem_comps(comp_ids: [String!]!): [CoreChemComp]
+
+  """Get literature information from PubMed database given the PubMed ID."""
+  pubmed(pubmed_id: Int!): CorePubmed
+
+  """Get UniProt KB entry given the UniProt primary accession."""
+  uniprot(uniprot_id: String!): CoreUniprot
+
+  """Given a group ID get a group object formed by aggregating entries."""
+  entry_group(group_id: String!): GroupEntry
+
+  """Given a list of group IDs get a list of group objects formed by aggregating entries."""
+  entry_groups(group_ids: [String!]!): [GroupEntry]
+
+  """Given a group ID get a group object formed by aggregating polymer entities."""
+  polymer_entity_group(group_id: String!): GroupPolymerEntity
+
+  """Given a list of group IDs get a list of group objects formed by aggregating polymer entities."""
+  polymer_entity_groups(group_ids: [String!]!): [GroupPolymerEntity]
+
+  """Given a group ID get a group object formed by aggregating non-polymer entities."""
+  nonpolymer_entity_group(group_id: String!): GroupNonPolymerEntity
+
+  """Given a list of group IDs get a list of group objects formed by aggregating non-polymer entities."""
+  nonpolymer_entity_groups(group_ids: [String!]!): [GroupNonPolymerEntity]
+
+  """Given a group provenance ID get an object that describes aggregation methodology."""
+  group_provenance(group_provenance_id: String!): GroupProvenance
+}
+
+"""Core PDB entry (structure) — top-level container for all data associated with a deposited structure."""
+type CoreEntry {
+  rcsb_id: String
+  entry: Entry
+  cell: Cell
+  symmetry: Symmetry
+  struct: Struct
+  struct_keywords: StructKeywords
+  exptl: [Exptl]
+  exptl_crystal: [ExptlCrystal]
+  exptl_crystal_grow: [ExptlCrystalGrow]
+  refine: [Refine]
+  refine_analyze: [RefineAnalyze]
+  refine_hist: [RefineHist]
+  refine_ls_restr: [RefineLsRestr]
+  reflns: [Reflns]
+  reflns_shell: [ReflnsShell]
+  diffrn: [Diffrn]
+  diffrn_detector: [DiffrnDetector]
+  diffrn_radiation: [DiffrnRadiation]
+  diffrn_source: [DiffrnSource]
+  citation: [Citation]
+  audit_author: [AuditAuthor]
+  database_2: [Database2]
+  software: [Software]
+  struct_asym: [StructAsym]
+  assemblies: [CoreAssembly]
+  nonpolymer_entities: [CoreNonpolymerEntity]
+  branched_entities: [CoreBranchedEntity]
+  entry_groups: [GroupEntry]
+  em_experiment: EmExperiment
+  em_2d_crystal_entity: [Em2dCrystalEntity]
+  em_3d_crystal_entity: [Em3dCrystalEntity]
+  em_3d_fitting: [Em3dFitting]
+  em_3d_fitting_list: [Em3dFittingList]
+  em_3d_reconstruction: [Em3dReconstruction]
+  em_ctf_correction: [EmCtfCorrection]
+  em_diffraction: [EmDiffraction]
+  em_diffraction_shell: [EmDiffractionShell]
+  em_diffraction_stats: [EmDiffractionStats]
+  em_embedding: [EmEmbedding]
+  em_entity_assembly: [EmEntityAssembly]
+  em_helical_entity: [EmHelicalEntity]
+  em_image_recording: [EmImageRecording]
+  em_imaging: [EmImaging]
+  em_particle_selection: [EmParticleSelection]
+  em_single_particle_entity: [EmSingleParticleEntity]
+  em_software: [EmSoftware]
+  em_specimen: [EmSpecimen]
+  em_staining: [EmStaining]
+  em_vitrification: [EmVitrification]
+  pdbx_audit_revision_history: [PdbxAuditRevisionHistory]
+  pdbx_audit_revision_category: [PdbxAuditRevisionCategory]
+  pdbx_audit_revision_details: [PdbxAuditRevisionDetails]
+  pdbx_audit_revision_group: [PdbxAuditRevisionGroup]
+  pdbx_audit_revision_item: [PdbxAuditRevisionItem]
+  pdbx_audit_support: [PdbxAuditSupport]
+  pdbx_database_PDB_obs_spr: [PdbxDatabasePDBObsSpr]
+  pdbx_database_related: [PdbxDatabaseRelated]
+  pdbx_database_status: PdbxDatabaseStatus
+  pdbx_deposit_group: [PdbxDepositGroup]
+  pdbx_nmr_details: PdbxNmrDetails
+  pdbx_nmr_ensemble: PdbxNmrEnsemble
+  pdbx_nmr_exptl: [PdbxNmrExptl]
+  pdbx_nmr_exptl_sample_conditions: [PdbxNmrExptlSampleConditions]
+  pdbx_nmr_refine: [PdbxNmrRefine]
+  pdbx_nmr_representative: PdbxNmrRepresentative
+  pdbx_nmr_sample_details: [PdbxNmrSampleDetails]
+  pdbx_nmr_software: [PdbxNmrSoftware]
+  pdbx_nmr_spectrometer: [PdbxNmrSpectrometer]
+  pdbx_reflns_twin: [PdbxReflnsTwin]
+  pdbx_related_exp_data_set: [PdbxRelatedExpDataSet]
+  pdbx_SG_project: [PdbxSGProject]
+  pdbx_serial_crystallography_data_reduction: [PdbxSerialCrystallographyDataReduction]
+  pdbx_serial_crystallography_measurement: [PdbxSerialCrystallographyMeasurement]
+  pdbx_serial_crystallography_sample_delivery: [PdbxSerialCrystallographySampleDelivery]
+  pdbx_serial_crystallography_sample_delivery_fixed_target: [PdbxSerialCrystallographySampleDeliveryFixedTarget]
+  pdbx_serial_crystallography_sample_delivery_injection: [PdbxSerialCrystallographySampleDeliveryInjection]
+  pdbx_soln_scatter: [PdbxSolnScatter]
+  pdbx_soln_scatter_model: [PdbxSolnScatterModel]
+  pdbx_struct_assembly: [PdbxStructAssembly]
+  pdbx_struct_assembly_auth_evidence: [PdbxStructAssemblyAuthEvidence]
+  pdbx_struct_assembly_gen: [PdbxStructAssemblyGen]
+  pdbx_struct_assembly_prop: [PdbxStructAssemblyProp]
+  pdbx_struct_oper_list: [PdbxStructOperList]
+  pdbx_struct_special_symmetry: [PdbxStructSpecialSymmetry]
+  pdbx_vrpt_summary: PdbxVrptSummary
+  pdbx_vrpt_summary_diffraction: [PdbxVrptSummaryDiffraction]
+  pdbx_vrpt_summary_em: [PdbxVrptSummaryEm]
+  pdbx_vrpt_summary_entity_fit_to_map: [PdbxVrptSummaryEntityFitToMap]
+  pdbx_vrpt_summary_entity_geometry: [PdbxVrptSummaryEntityGeometry]
+  pdbx_vrpt_summary_geometry: [PdbxVrptSummaryGeometry]
+  pdbx_vrpt_summary_nmr: [PdbxVrptSummaryNmr]
+  pdbx_initial_refinement_model: [PdbxInitialRefinementModel]
+  ihm_entry_collection_mapping: [IhmEntryCollectionMapping]
+  ihm_external_reference_info: [IhmExternalReferenceInfo]
+  rcsb_entry_container_identifiers: RcsbEntryContainerIdentifiers
+  rcsb_entry_info: RcsbEntryInfo
+  rcsb_entry_group_membership: [RcsbEntryGroupMembership]
+  rcsb_accession_info: RcsbAccessionInfo
+  rcsb_external_references: [RcsbExternalReferences]
+  rcsb_latest_revision: RcsbLatestRevision
+  rcsb_primary_citation: RcsbPrimaryCitation
+  rcsb_struct_symmetry: [RcsbStructSymmetry]
+  rcsb_binding_affinity: [RcsbBindingAffinity]
+  rcsb_entry_info_diffrn_resolution_high: RcsbEntryInfoDiffrnResolutionHigh
+  rcsb_related_target_references: [RcsbRelatedTargetReferences]
+  ma_data: [MaData]
+}
+
+"""Polymer entity — protein, DNA, RNA, or other polymer chain."""
+type CorePolymerEntity {
+  rcsb_id: String
+  entity_poly: EntityPoly
+  entity_src_gen: [EntitySrcGen]
+  entity_src_nat: [EntitySrcNat]
+  pdbx_entity_src_syn: [PdbxEntitySrcSyn]
+  pfams: [CorePfam]
+  polymer_entity_instances: [CorePolymerEntityInstance]
+  polymer_entity_groups: [GroupPolymerEntity]
+  entry: CoreEntry
+  chem_comp_monomers: [CoreChemComp]
+  chem_comp_nstd_monomers: [CoreChemComp]
+  prd: CoreChemComp
+  rcsb_cluster_flexibility: [RcsbClusterFlexibility]
+  rcsb_cluster_membership: [RcsbClusterMembership]
+  rcsb_entity_host_organism: [RcsbEntityHostOrganism]
+  rcsb_entity_source_organism: [RcsbEntitySourceOrganism]
+  rcsb_genomic_lineage: [RcsbGenomicLineage]
+  rcsb_latest_revision: RcsbLatestRevision
+  rcsb_membrane_lineage: [RcsbMembraneLineage]
+  rcsb_polymer_entity: RcsbPolymerEntity
+  rcsb_polymer_entity_align: [RcsbPolymerEntityAlign]
+  rcsb_polymer_entity_annotation: [RcsbPolymerEntityAnnotation]
+  rcsb_polymer_entity_container_identifiers: RcsbPolymerEntityContainerIdentifiers
+  rcsb_polymer_entity_feature: [RcsbPolymerEntityFeature]
+  rcsb_polymer_entity_feature_summary: [RcsbPolymerEntityFeatureSummary]
+  rcsb_polymer_entity_group_membership: [RcsbPolymerEntityGroupMembership]
+  rcsb_polymer_entity_keywords: RcsbPolymerEntityKeywords
+  rcsb_polymer_entity_name_com: [RcsbPolymerEntityNameCom]
+  rcsb_polymer_entity_name_sys: [RcsbPolymerEntityNameSys]
+  rcsb_related_target_references: [RcsbRelatedTargetReferences]
+  rcsb_target_cofactors: [RcsbTargetCofactors]
+  rcsb_uniprot_alignments: RcsbUniprotAlignments
+  uniprots: [CoreUniprot]
+}
+
+"""Non-polymer entity — small molecule ligand."""
+type CoreNonpolymerEntity {
+  rcsb_id: String
+  pdbx_entity_nonpoly: PdbxEntityNonpoly
+  nonpolymer_entity_instances: [CoreNonpolymerEntityInstance]
+  entry: CoreEntry
+  chem_comp: CoreChemComp
+  rcsb_nonpolymer_entity: RcsbNonpolymerEntity
+  rcsb_nonpolymer_entity_annotation: [RcsbNonpolymerEntityAnnotation]
+  rcsb_nonpolymer_entity_container_identifiers: RcsbNonpolymerEntityContainerIdentifiers
+  rcsb_nonpolymer_entity_feature: [RcsbNonpolymerEntityFeature]
+  rcsb_nonpolymer_entity_feature_summary: [RcsbNonpolymerEntityFeatureSummary]
+  rcsb_nonpolymer_entity_keywords: RcsbNonpolymerEntityKeywords
+  rcsb_nonpolymer_entity_name_com: [RcsbNonpolymerEntityNameCom]
+  rcsb_latest_revision: RcsbLatestRevision
+  rcsb_related_target_references: [RcsbRelatedTargetReferences]
+  rcsb_target_cofactors: [RcsbTargetCofactors]
+  rcsb_target_neighbors: [RcsbTargetNeighbors]
+  rcsb_binding_affinity: [RcsbBindingAffinity]
+}
+
+"""Branched entity — oligosaccharide or other branched polymer."""
+type CoreBranchedEntity {
+  rcsb_id: String
+  pdbx_entity_branch: PdbxEntityBranch
+  pdbx_entity_branch_descriptor: [PdbxEntityBranchDescriptor]
+  branched_entity_instances: [CoreBranchedEntityInstance]
+  entry: CoreEntry
+  chem_comp_monomers: [CoreChemComp]
+  rcsb_branched_entity: RcsbBranchedEntity
+  rcsb_branched_entity_annotation: [RcsbBranchedEntityAnnotation]
+  rcsb_branched_entity_container_identifiers: RcsbBranchedEntityContainerIdentifiers
+  rcsb_branched_entity_feature: [RcsbBranchedEntityFeature]
+  rcsb_branched_entity_feature_summary: [RcsbBranchedEntityFeatureSummary]
+  rcsb_branched_entity_keywords: RcsbBranchedEntityKeywords
+  rcsb_branched_entity_name_com: [RcsbBranchedEntityNameCom]
+  rcsb_branched_entity_name_sys: [RcsbBranchedEntityNameSys]
+  rcsb_latest_revision: RcsbLatestRevision
+}
+
+"""Assembly — biologically relevant quaternary structure."""
+type CoreAssembly {
+  rcsb_id: String
+  pdbx_struct_assembly: PdbxStructAssembly
+  pdbx_struct_assembly_auth_evidence: [PdbxStructAssemblyAuthEvidence]
+  pdbx_struct_assembly_gen: [PdbxStructAssemblyGen]
+  pdbx_struct_assembly_prop: [PdbxStructAssemblyProp]
+  pdbx_struct_oper_list: [PdbxStructOperList]
+  interfaces: [CoreInterface]
+  entry: CoreEntry
+  rcsb_assembly_annotation: [RcsbAssemblyAnnotation]
+  rcsb_assembly_container_identifiers: RcsbAssemblyContainerIdentifiers
+  rcsb_assembly_feature: [RcsbAssemblyFeature]
+  rcsb_assembly_info: RcsbAssemblyInfo
+  rcsb_latest_revision: RcsbLatestRevision
+  rcsb_struct_symmetry: [RcsbStructSymmetry]
+  rcsb_struct_symmetry_lineage: [RcsbStructSymmetryLineage]
+}
+
+"""Polymer entity instance — a single chain in the asymmetric unit."""
+type CorePolymerEntityInstance {
+  rcsb_id: String
+  polymer_entity: CorePolymerEntity
+  entry: CoreEntry
+  rcsb_polymer_entity_instance_container_identifiers: RcsbPolymerEntityInstanceContainerIdentifiers
+  rcsb_polymer_instance_annotation: [RcsbPolymerInstanceAnnotation]
+  rcsb_polymer_instance_feature: [RcsbPolymerInstanceFeature]
+  rcsb_polymer_instance_feature_summary: [RcsbPolymerInstanceFeatureSummary]
+  rcsb_polymer_instance_info: RcsbPolymerInstanceInfo
+  rcsb_polymer_struct_conn: [RcsbPolymerStructConn]
+  rcsb_latest_revision: RcsbLatestRevision
+  rcsb_ligand_neighbors: [RcsbLigandNeighbors]
+  rcsb_target_neighbors: [RcsbTargetNeighbors]
+}
+
+"""Non-polymer entity instance — ligand chain in the asymmetric unit."""
+type CoreNonpolymerEntityInstance {
+  rcsb_id: String
+  nonpolymer_entity: CoreNonpolymerEntity
+  entry: CoreEntry
+  rcsb_nonpolymer_entity_instance_container_identifiers: RcsbNonpolymerEntityInstanceContainerIdentifiers
+  rcsb_nonpolymer_instance_annotation: [RcsbNonpolymerInstanceAnnotation]
+  rcsb_nonpolymer_instance_feature: [RcsbNonpolymerInstanceFeature]
+  rcsb_nonpolymer_instance_feature_summary: [RcsbNonpolymerInstanceFeatureSummary]
+  rcsb_nonpolymer_instance_validation_score: [RcsbNonpolymerInstanceValidationScore]
+  rcsb_nonpolymer_struct_conn: [RcsbNonpolymerStructConn]
+  rcsb_latest_revision: RcsbLatestRevision
+  rcsb_ligand_neighbors: [RcsbLigandNeighbors]
+}
+
+"""Branched entity instance — oligosaccharide chain in the asymmetric unit."""
+type CoreBranchedEntityInstance {
+  rcsb_id: String
+  branched_entity: CoreBranchedEntity
+  entry: CoreEntry
+  rcsb_branched_entity_instance_container_identifiers: RcsbBranchedEntityInstanceContainerIdentifiers
+  rcsb_branched_instance_annotation: [RcsbBranchedInstanceAnnotation]
+  rcsb_branched_instance_feature: [RcsbBranchedInstanceFeature]
+  rcsb_branched_instance_feature_summary: [RcsbBranchedInstanceFeatureSummary]
+  rcsb_branched_struct_conn: [RcsbBranchedStructConn]
+  rcsb_latest_revision: RcsbLatestRevision
+}
+
+"""Pairwise polymeric interface within an assembly."""
+type CoreInterface {
+  rcsb_id: String
+  entry: CoreEntry
+  assembly: CoreAssembly
+  rcsb_interface_container_identifiers: RcsbInterfaceContainerIdentifiers
+  rcsb_interface_info: RcsbInterfaceInfo
+  rcsb_interface_partner: [RcsbInterfacePartner]
+  rcsb_latest_revision: RcsbLatestRevision
+}
+
+"""Chemical component — small molecule or monomer definition."""
+type CoreChemComp {
+  rcsb_id: String
+  chem_comp: ChemComp
+  drugbank: CoreDrugbank
+  pdbx_chem_comp_audit: [PdbxChemCompAudit]
+  pdbx_chem_comp_descriptor: [PdbxChemCompDescriptor]
+  pdbx_chem_comp_feature: [PdbxChemCompFeature]
+  pdbx_chem_comp_identifier: [PdbxChemCompIdentifier]
+  pdbx_family_prd_audit: [PdbxFamilyPrdAudit]
+  pdbx_molecule_features: PdbxMoleculeFeatures
+  pdbx_prd_audit: [PdbxPrdAudit]
+  pdbx_reference_entity_list: [PdbxReferenceEntityList]
+  pdbx_reference_entity_poly: [PdbxReferenceEntityPoly]
+  pdbx_reference_entity_poly_link: [PdbxReferenceEntityPolyLink]
+  pdbx_reference_entity_poly_seq: [PdbxReferenceEntityPolySeq]
+  pdbx_reference_entity_sequence: [PdbxReferenceEntitySequence]
+  pdbx_reference_entity_src_nat: [PdbxReferenceEntitySrcNat]
+  pdbx_reference_molecule: PdbxReferenceMolecule
+  pdbx_reference_molecule_annotation: [PdbxReferenceMoleculeAnnotation]
+  pdbx_reference_molecule_details: [PdbxReferenceMoleculeDetails]
+  pdbx_reference_molecule_family: PdbxReferenceMoleculeFamily
+  pdbx_reference_molecule_features: [PdbxReferenceMoleculeFeatures]
+  pdbx_reference_molecule_list: [PdbxReferenceMoleculeList]
+  pdbx_reference_molecule_related_structures: [PdbxReferenceMoleculeRelatedStructures]
+  pdbx_reference_molecule_synonyms: [PdbxReferenceMoleculeSynonyms]
+  rcsb_bird_citation: [RcsbBirdCitation]
+  rcsb_chem_comp_annotation: [RcsbChemCompAnnotation]
+  rcsb_chem_comp_container_identifiers: RcsbChemCompContainerIdentifiers
+  rcsb_chem_comp_descriptor: RcsbChemCompDescriptor
+  rcsb_chem_comp_info: RcsbChemCompInfo
+  rcsb_chem_comp_related: [RcsbChemCompRelated]
+  rcsb_chem_comp_synonyms: [RcsbChemCompSynonyms]
+  rcsb_chem_comp_target: [RcsbChemCompTarget]
+  rcsb_schema_container_identifiers: [RcsbSchemaContainerIdentifiers]
+}
+
+"""PubMed literature record linked to a PDB entry."""
+type CorePubmed {
+  rcsb_id: String
+  rcsb_pubmed_container_identifiers: RcsbPubmedContainerIdentifiers
+  rcsb_pubmed_mesh_descriptors_lineage: [RcsbPubmedMeshDescriptorsLineage]
+}
+
+"""UniProt KB record linked to a polymer entity."""
+type CoreUniprot {
+  rcsb_id: String
+  rcsb_uniprot_alignments: RcsbUniprotAlignments
+  rcsb_uniprot_annotation: [RcsbUniprotAnnotation]
+  rcsb_uniprot_container_identifiers: RcsbUniprotContainerIdentifiers
+  rcsb_uniprot_external_reference: [RcsbUniprotExternalReference]
+  rcsb_uniprot_feature: [RcsbUniprotFeature]
+  rcsb_uniprot_keyword: [RcsbUniprotKeyword]
+  rcsb_uniprot_protein: RcsbUniprotProtein
+}
+
+"""DrugBank annotation for a chemical component."""
+type CoreDrugbank {
+  drugbank_container_identifiers: DrugbankContainerIdentifiers
+  drugbank_info: DrugbankInfo
+  drugbank_target: [DrugbankTarget]
+}
+
+"""PFAM domain annotation for a polymer entity."""
+type CorePfam {
+  rcsb_pfam_container_identifiers: RcsbPfamContainerIdentifiers
+}
+
+"""Group of entries aggregated by a shared property."""
+type GroupEntry {
+  rcsb_id: String
+  rcsb_group_accession_info: RcsbGroupAccessionInfo
+  rcsb_group_aggregation_method: [RcsbGroupAggregationMethod]
+  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers
+  rcsb_group_info: RcsbGroupInfo
+  rcsb_group_related: [RcsbGroupRelated]
+  rcsb_group_statistics: RcsbGroupStatistics
+}
+
+"""Group of polymer entities aggregated by sequence identity."""
+type GroupPolymerEntity {
+  rcsb_id: String
+  rcsb_group_accession_info: RcsbGroupAccessionInfo
+  rcsb_group_aggregation_method: [RcsbGroupAggregationMethod]
+  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers
+  rcsb_group_info: RcsbGroupInfo
+  rcsb_group_related: [RcsbGroupRelated]
+  rcsb_group_statistics: RcsbGroupStatistics
+  rcsb_polymer_entity_group_members_rankings: [RcsbPolymerEntityGroupMembersRankings]
+  rcsb_polymer_entity_group_sequence_alignment: [RcsbPolymerEntityGroupSequenceAlignment]
+}
+
+"""Group of non-polymer entities aggregated by shared property."""
+type GroupNonPolymerEntity {
+  rcsb_id: String
+  rcsb_group_accession_info: RcsbGroupAccessionInfo
+  rcsb_group_aggregation_method: [RcsbGroupAggregationMethod]
+  rcsb_group_container_identifiers: RcsbGroupContainerIdentifiers
+  rcsb_group_info: RcsbGroupInfo
+  rcsb_group_related: [RcsbGroupRelated]
+  rcsb_group_statistics: RcsbGroupStatistics
+}
+
+"""Aggregation method provenance descriptor."""
+type GroupProvenance {
+  rcsb_id: String
+  rcsb_group_provenance_container_identifiers: RcsbGroupProvenanceContainerIdentifiers
+}
+
+# ── mmCIF Data Types ──────────────────────────────────────────────────────────
+
+type Entry { id: String }
+
+type Cell {
+  angle_alpha: Float
+  angle_beta: Float
+  angle_gamma: Float
+  length_a: Float
+  length_b: Float
+  length_c: Float
+  pdbx_unique_axis: String
+  volume: Float
+  Z_PDB: Int
+}
+
+type Symmetry {
+  cell_setting: String
+  Int_Tables_number: Int
+  space_group_name_H_M: String
+  space_group_name_Hall: String
+  pdbx_full_space_group_name_H_M: String
+}
+
+type Struct {
+  entry_id: String
+  pdbx_CASP_flag: String
+  pdbx_descriptor: String
+  pdbx_model_details: String
+  pdbx_model_type_details: String
+  title: String
+}
+
+type StructKeywords {
+  entry_id: String
+  pdbx_keywords: String
+  text: String
+}
+
+type Exptl {
+  entry_id: String
+  crystals_number: Int
+  details: String
+  method: String
+  method_details: String
+}
+
+type ExptlCrystal {
+  id: String
+  colour: String
+  density_Matthews: Float
+  density_meas: Float
+  density_percent_sol: Float
+  description: String
+  F_000: Float
+  pdbx_mosaicity: Float
+  pdbx_mosaicity_esd: Float
+  preparation: String
+  size_max: Float
+  size_mid: Float
+  size_min: Float
+  size_rad: Float
+}
+
+type ExptlCrystalGrow {
+  crystal_id: String
+  details: String
+  method: String
+  method_ref: String
+  pH: Float
+  pdbx_atm_pressure: Float
+  pdbx_details: String
+  pdbx_pH_range: String
+  temp: Float
+  temp_details: String
+  time: String
+}
+
+type Refine {
+  entry_id: String
+  B_iso_mean: Float
+  correlation_coeff_Fo_to_Fc: Float
+  correlation_coeff_Fo_to_Fc_free: Float
+  details: String
+  ls_d_res_high: Float
+  ls_d_res_low: Float
+  ls_number_reflns_obs: Int
+  ls_R_factor_obs: Float
+  ls_R_factor_R_free: Float
+  ls_R_factor_R_free_error: Float
+  ls_R_factor_R_work: Float
+  ls_rfactor_obs: Float
+  pdbx_method_to_determine_struct: String
+  pdbx_refine_id: String
+  pdbx_solvent_ion_probe_radii: Float
+  pdbx_solvent_shrink_radii: Float
+  pdbx_solvent_vdw_probe_radii: Float
+  pdbx_stereochem_target_val_spec_case: String
+  pdbx_TLS_residual_ADP_flag: String
+  solvent_model_details: String
+}
+
+type RefineAnalyze {
+  entry_id: String
+  pdbx_refine_id: String
+  Luzzati_coordinate_error_obs: Float
+  number_disordered_residues: Float
+}
+
+type RefineHist {
+  cycle_id: String
+  entry_id: String
+  pdbx_refine_id: String
+  pdbx_number_atoms_protein: Int
+  pdbx_number_atoms_ligand: Int
+  pdbx_number_atoms_nucleic_acid: Int
+  pdbx_number_atoms_solvent: Int
+  pdbx_number_atoms_total: Int
+  pdbx_number_residues_total: Int
+}
+
+type RefineLsRestr {
+  criterion: Float
+  dev_ideal: Float
+  dev_ideal_target: Float
+  entry_id: String
+  number: Int
+  pdbx_refine_id: String
+  pdbx_restraint_function: String
+  type: String
+  weight: Float
+}
+
+type Reflns {
+  B_iso_Wilson_estimate: Float
+  d_resolution_high: Float
+  d_resolution_low: Float
+  entry_id: String
+  limit_h_max: Int
+  limit_h_min: Int
+  limit_k_max: Int
+  limit_k_min: Int
+  limit_l_max: Int
+  limit_l_min: Int
+  number_obs: Int
+  observed_criterion_sigma_F: Float
+  observed_criterion_sigma_I: Float
+  pdbx_CC_half: Float
+  pdbx_net_I_over_sigma_I: Float
+  pdbx_number_measured_all: Int
+  pdbx_ordinal: Int
+  pdbx_Rmerge_I_obs: Float
+  pdbx_Rsym_value: Float
+  pdbx_redundancy: Float
+  pdbx_scaling_rejects: Int
+  percent_possible_obs: Float
+  R_free_details: String
+  Rmerge_F_obs: Float
+  Rmerge_I_obs: Float
+}
+
+type ReflnsShell {
+  d_res_high: Float
+  d_res_low: Float
+  entry_id: String
+  meanI_over_sigI_obs: Float
+  number_measured_obs: Int
+  number_possible: Int
+  number_unique_all: Int
+  number_unique_obs: Int
+  pdbx_CC_half: Float
+  pdbx_ordinal: Int
+  pdbx_Rmerge_I_obs: Float
+  pdbx_Rsym_value: Float
+  pdbx_redundancy: Float
+  percent_possible_all: Float
+  percent_possible_obs: Float
+  Rmerge_I_obs: Float
+}
+
+type Diffrn {
+  ambient_temp: Float
+  ambient_temp_details: String
+  crystal_id: String
+  details: String
+  id: String
+  pdbx_monochromatic_or_laue_m_l: String
+  pdbx_serial_crystal_experiment: String
+  pdbx_vitrification_details: String
+  scattering_type: String
+}
+
+type DiffrnDetector {
+  details: String
+  detector: String
+  diffrn_id: String
+  pdbx_collection_date: Date
+  pdbx_frequency: Float
+  type: String
+}
+
+type DiffrnRadiation {
+  diffrn_id: String
+  monochromator: String
+  pdbx_diffrn_protocol: String
+  pdbx_monochromatic_or_laue_m_l: String
+  pdbx_scattering_type: String
+  pdbx_wavelength: String
+  pdbx_wavelength_list: String
+  type: String
+  wavelength_id: String
+}
+
+type DiffrnSource {
+  current_ma: Float
+  details: String
+  diffrn_id: String
+  pdbx_synchrotron_beamline: String
+  pdbx_synchrotron_site: String
+  pdbx_wavelength: String
+  pdbx_wavelength_list: String
+  power_kw: Float
+  source: String
+  target: String
+  type: String
+  voltage_kv: Float
+}
+
+type Citation {
+  book_id_ISBN: String
+  book_publisher: String
+  book_publisher_city: String
+  book_title: String
+  coordinate_linkage: String
+  country: String
+  details: String
+  id: String
+  journal_abbrev: String
+  journal_full: String
+  journal_id_ASTM: String
+  journal_id_CSD: Int
+  journal_id_ISSN: String
+  journal_volume: String
+  language: String
+  page_first: String
+  page_last: String
+  pdbx_database_id_DOI: String
+  pdbx_database_id_PubMed: Int
+  rcsb_authors: [String]
+  rcsb_is_primary: String
+  rcsb_journal_abbrev: String
+  title: String
+  year: Int
+}
+
+type AuditAuthor {
+  identifier_ORCID: String
+  name: String
+  pdbx_ordinal: Int
+}
+
+type Database2 {
+  database_code: String
+  database_id: String
+  pdbx_database_accession: String
+  pdbx_DOI: String
+}
+
+type Software {
+  classification: String
+  contact_author: String
+  contact_author_email: String
+  date: String
+  description: String
+  language: String
+  location: String
+  name: String
+  os: String
+  pdbx_ordinal: Int
+  type: String
+  version: String
+}
+
+type StructAsym {
+  details: String
+  entity_id: String
+  id: String
+  pdbx_blank_PDB_chainid_flag: String
+  pdbx_modified: String
+}
+
+type EntityPoly {
+  entity_id: String
+  nstd_linkage: String
+  nstd_monomer: String
+  pdbx_build_details: String
+  pdbx_seq_one_letter_code: String
+  pdbx_seq_one_letter_code_can: String
+  pdbx_seq_one_letter_code_sample: String
+  pdbx_sequence_evidence_code: String
+  pdbx_strand_id: String
+  pdbx_target_identifier: String
+  rcsb_artifact_monomer_count: Int
+  rcsb_conflict_count: Int
+  rcsb_deletion_count: Int
+  rcsb_entity_polymer_type: String
+  rcsb_insertion_count: Int
+  rcsb_mutation_count: Int
+  rcsb_non_std_monomer_count: Int
+  rcsb_non_std_monomers: [String]
+  rcsb_prd_id: String
+  rcsb_sample_sequence_length: Int
+  rcsb_seq_one_letter_code_sample: String
+  type: String
+}
+
+type EntitySrcGen {
+  entity_id: String
+  expression_system_id: String
+  gene_src_common_name: String
+  gene_src_details: String
+  gene_src_genus: String
+  gene_src_species: String
+  gene_src_strain: String
+  gene_src_tissue: String
+  host_org_common_name: String
+  host_org_genus: String
+  host_org_species: String
+  pdbx_alt_source_flag: String
+  pdbx_beg_seq_num: Int
+  pdbx_end_seq_num: Int
+  pdbx_gene_src_atcc: String
+  pdbx_gene_src_cell: String
+  pdbx_gene_src_cell_line: String
+  pdbx_gene_src_cellular_location: String
+  pdbx_gene_src_fragment: String
+  pdbx_gene_src_gene: String
+  pdbx_gene_src_ncbi_taxonomy_id: String
+  pdbx_gene_src_organ: String
+  pdbx_gene_src_organelle: String
+  pdbx_gene_src_plasmid: String
+  pdbx_gene_src_plasmid_name: String
+  pdbx_gene_src_scientific_name: String
+  pdbx_gene_src_tissue_fraction: String
+  pdbx_host_org_atcc: String
+  pdbx_host_org_cell: String
+  pdbx_host_org_cell_line: String
+  pdbx_host_org_cellular_location: String
+  pdbx_host_org_culture_collection: String
+  pdbx_host_org_gene: String
+  pdbx_host_org_ncbi_taxonomy_id: String
+  pdbx_host_org_organ: String
+  pdbx_host_org_organelle: String
+  pdbx_host_org_plasmid: String
+  pdbx_host_org_plasmid_name: String
+  pdbx_host_org_scientific_name: String
+  pdbx_host_org_strain: String
+  pdbx_host_org_tissue: String
+  pdbx_host_org_tissue_fraction: String
+  pdbx_host_org_vector: String
+  pdbx_host_org_vector_type: String
+  pdbx_seq_type: String
+  pdbx_src_id: Int
+}
+
+type EntitySrcNat {
+  common_name: String
+  entity_id: String
+  genus: String
+  pdbx_alt_source_flag: String
+  pdbx_atcc: String
+  pdbx_beg_seq_num: Int
+  pdbx_cell: String
+  pdbx_cell_line: String
+  pdbx_cellular_location: String
+  pdbx_end_seq_num: Int
+  pdbx_fragment: String
+  pdbx_ncbi_taxonomy_id: String
+  pdbx_organ: String
+  pdbx_organelle: String
+  pdbx_organism_scientific: String
+  pdbx_plasmid_details: String
+  pdbx_plasmid_name: String
+  pdbx_secretion: String
+  pdbx_src_id: Int
+  pdbx_tissue: String
+  pdbx_tissue_fraction: String
+  species: String
+  strain: String
+  tissue: String
+}
+
+type PdbxEntitySrcSyn {
+  details: String
+  entity_id: String
+  ncbi_taxonomy_id: String
+  organism_common_name: String
+  organism_scientific: String
+  pdbx_alt_source_flag: String
+  pdbx_beg_seq_num: Int
+  pdbx_end_seq_num: Int
+  pdbx_src_id: Int
+  strain: String
+}
+
+type PdbxEntityBranch { entity_id: String; type: String }
+type PdbxEntityBranchDescriptor { entity_id: String; descriptor: String; type: String; program: String; program_version: String; ordinal: Int }
+type PdbxEntityNonpoly { comp_id: String; entity_id: String; name: String; rcsb_prd_id: String }
+
+type ChemComp {
+  formula: String
+  formula_weight: Float
+  id: String
+  model_details: String
+  model_erf: String
+  model_source: String
+  mon_nstd_class: String
+  mon_nstd_details: String
+  mon_nstd_flag: String
+  mon_nstd_parent_comp_id: [String]
+  name: String
+  one_letter_code: String
+  pdbx_ambiguous_flag: String
+  pdbx_formal_charge: Int
+  pdbx_ideal_coordinates_details: String
+  pdbx_ideal_coordinates_missing_flag: String
+  pdbx_initial_date: Date
+  pdbx_model_coordinates_db_code: String
+  pdbx_model_coordinates_details: String
+  pdbx_model_coordinates_missing_flag: String
+  pdbx_modified_date: Date
+  pdbx_release_status: String
+  pdbx_replaced_by: String
+  pdbx_replaces: String
+  pdbx_processing_site: String
+  pdbx_subcomponent_list: String
+  pdbx_synonyms: String
+  three_letter_code: String
+  type: String
+}
+
+# ── EM (cryo-EM) types ────────────────────────────────────────────────────────
+
+type EmExperiment { entry_id: String; aggregation_state: String; entity_assembly_id: String; id: String; reconstruction_method: String }
+type Em2dCrystalEntity { entry_id: String; id: String; image_processing_id: String; angle_gamma: Float; c_sampling_length: Float; length_a: Float; length_b: Float; space_group_name_H_M: String }
+type Em3dCrystalEntity { entry_id: String; id: String; angle_alpha: Float; angle_beta: Float; angle_gamma: Float; length_a: Float; length_b: Float; length_c: Float; space_group_name: String }
+type Em3dFitting { entry_id: String; id: String; details: String; method: String; overall_b_value: Float; ref_protocol: String; ref_space: String; target_criteria: String }
+type Em3dFittingList { id: String; _3d_fitting_id: String; pdb_chain_id: String; pdb_chain_residue_range: String; pdb_entry_id: String; type: String }
+type Em3dReconstruction { entry_id: String; id: String; algorithm: String; actual_pixel_size: Float; magnification_calibration: String; method: String; nominal_pixel_size: Float; num_class_averages: Int; num_particles: Int; point_symmetry: String; refinement_type: String; resolution: Float; resolution_method: String }
+type EmCtfCorrection { entry_id: String; id: String; em_image_processing_id: String; details: String; type: String }
+type EmDiffraction { entry_id: String; id: String; imaging_id: String; tilt_angle_list: String }
+type EmDiffractionShell { em_diffraction_stats_id: String; fourier_space_coverage: Float; high_resolution: Float; id: String; low_resolution: Float; multiplicity: Float; num_structure_factors: Int; phase_residual: Float }
+type EmDiffractionStats { entry_id: String; id: String; image_processing_id: String; details: String; fourier_space_coverage: Float; high_resolution: Float; num_intensities_measured: Int; num_structure_factors: Int; overall_phase_error: Float; overall_phase_residual: Float; phase_error_rejection_criteria: String; r_merge: Float; r_sym: Float }
+type EmEmbedding { entry_id: String; id: String; specimen_id: String; details: String; material: String }
+type EmEntityAssembly { entry_id: String; id: String; ihmm_model_id_list: [Int]; name: String; parent_id: Int; source: String; synonym: String; type: String }
+type EmHelicalEntity { entry_id: String; id: String; image_processing_id: String; angular_rotation_per_subunit: Float; axial_rise_per_subunit: Float; axial_symmetry: String; details: String }
+type EmImageRecording { entry_id: String; id: String; imaging_id: String; average_exposure_time: Float; avg_electron_dose_per_image: Float; detector_mode: String; details: String; film_or_detector_model: String; num_diffraction_images: Int; num_grids_imaged: Int; num_real_images: Int }
+type EmImaging { entry_id: String; id: String; accelerating_voltage: Int; alignment_procedure: String; astigmatism: String; citation_id: String; c2_aperture_diameter: Float; calibrated_defocus_max: Float; calibrated_defocus_min: Float; calibrated_magnification: Int; cryogen: String; date: Date; detector_distance: Float; details: String; electron_beam_tilt_params: String; electron_source: String; energy_filter: String; energy_window: String; illumination_mode: String; microscope_model: String; mode: String; nominal_cs: Float; nominal_defocus_max: Float; nominal_defocus_min: Float; nominal_magnification: Int; recording_temperature_maximum: Float; recording_temperature_minimum: Float; residual_tilt: Float; sample_support_details: String; scans_id: String; specimen_holder_model: String; specimen_holder_type: String; temperature: Float; tilt_angle_max: Float; tilt_angle_min: Float }
+type EmParticleSelection { entry_id: String; id: String; image_processing_id: String; details: String; num_particles_selected: Int }
+type EmSingleParticleEntity { entry_id: String; id: String; image_processing_id: String; point_symmetry: String }
+type EmSoftware { entry_id: String; id: String; category: String; details: String; fitting_id: String; image_processing_id: String; name: String; version: String }
+type EmSpecimen { entry_id: String; id: String; concentration: Float; details: String; embedding_applied: String; shadowing_applied: String; staining_applied: String; vitrification_applied: String }
+type EmStaining { entry_id: String; id: String; specimen_id: String; details: String; material: String; type: String }
+type EmVitrification { entry_id: String; id: String; specimen_id: String; chamber_humidity: Float; chamber_temperature: Float; cryogen_name: String; details: String; instrument: String; method: String; temp: Float; time_resolved_state: String }
+
+# ── NMR types ─────────────────────────────────────────────────────────────────
+
+type PdbxNmrDetails { entry_id: String; text: String }
+type PdbxNmrEnsemble { entry_id: String; average_constraint_violations_per_residue: Int; average_constraints_per_residue: Int; average_distance_constraint_violation: Float; average_torsion_angle_constraint_violation: Float; conformer_selection_criteria: String; maximum_distance_constraint_violation: Float; maximum_lower_distance_constraint_violation: Float; maximum_torsion_angle_constraint_violation: Float; maximum_upper_distance_constraint_violation: Float; nstruct: Int }
+type PdbxNmrExptl { entry_id: String; conditions_id: String; experiment_id: String; solution_id: String; spectrometer_id: Int; type: String }
+type PdbxNmrExptlSampleConditions { entry_id: String; conditions_id: String; details: String; ionic_strength: String; ionic_strength_err: Float; ionic_strength_units: String; label: String; pH: Float; pH_err: Float; pH_units: String; pressure: String; pressure_err: Float; pressure_units: String; temperature: Float; temperature_err: Float; temperature_units: String }
+type PdbxNmrRefine { entry_id: String; details: String; method: String; software_ordinal: Int }
+type PdbxNmrRepresentative { entry_id: String; conformer_id: String; selection_criteria: String }
+type PdbxNmrSampleDetails { entry_id: String; solution_id: String; contents: String; details: String; label: String; solvent_system: String; type: String }
+type PdbxNmrSoftware { entry_id: String; authors: String; classification: String; name: String; ordinal: Int; version: String }
+type PdbxNmrSpectrometer { entry_id: String; id: String; details: String; field_strength: Float; manufacturer: String; model: String; type: String }
+
+# ── Audit / Revision History ──────────────────────────────────────────────────
+
+type PdbxAuditRevisionHistory { data_content_type: String; major_revision: Int; minor_revision: Int; ordinal: Int; revision_date: Date }
+type PdbxAuditRevisionCategory { data_content_type: String; category: String; ordinal: Int; revision_ordinal: Int }
+type PdbxAuditRevisionDetails { data_content_type: String; description: String; details: String; ordinal: Int; provider: String; revision_ordinal: Int; type: String }
+type PdbxAuditRevisionGroup { data_content_type: String; group: String; ordinal: Int; revision_ordinal: Int }
+type PdbxAuditRevisionItem { data_content_type: String; item: String; ordinal: Int; revision_ordinal: Int }
+type PdbxAuditSupport { funding_organization: String; country: String; grant_number: String; ordinal: Int }
+
+# ── Database / Status ─────────────────────────────────────────────────────────
+
+type PdbxDatabasePDBObsSpr { date: Date; details: String; id: String; pdb_id: String; replace_pdb_id: String }
+type PdbxDatabaseRelated { content_type: String; db_id: String; db_name: String; details: String }
+type PdbxDatabaseStatus { deposit_site: String; entry_id: String; process_site: String; recvd_initial_deposition_date: Date; status_code: String; status_code_cs: String; status_code_mr: String; status_code_sf: String }
+type PdbxDepositGroup { group_description: String; group_id: String; group_title: String; group_type: String; ordinal: Int }
+
+# ── Assembly / Struct Oper ────────────────────────────────────────────────────
+
+type PdbxStructAssembly { details: String; entry_id: String; id: String; method_details: String; oligomeric_count: Int; oligomeric_details: String; rcsb_candidate_assembly: String; rcsb_details: String }
+type PdbxStructAssemblyAuthEvidence { assembly_id: String; details: String; entry_id: String; experimental_support: String; id: String }
+type PdbxStructAssemblyGen { assembly_id: String; asym_id_list: [String]; entry_id: String; oper_expression: String; ordinal: Int }
+type PdbxStructAssemblyProp { assembly_id: String; entry_id: String; type: String; value: String }
+type PdbxStructOperList { entry_id: String; id: String; matrix_1_1: Float; matrix_1_2: Float; matrix_1_3: Float; matrix_2_1: Float; matrix_2_2: Float; matrix_2_3: Float; matrix_3_1: Float; matrix_3_2: Float; matrix_3_3: Float; name: String; symmetry_operation: String; type: String; vector_1: Float; vector_2: Float; vector_3: Float }
+type PdbxStructSpecialSymmetry { entry_id: String; id: String; auth_asym_id: String; auth_seq_id: String; pdb_ins_code: String; reason_for_special_position: String }
+
+# ── Validation Report ─────────────────────────────────────────────────────────
+
+type PdbxVrptSummary { entry_id: String; angles_RMSZ: Float; bonds_RMSZ: Float; clashscore: Float; clashscore_full_length: Float; pdbx_vrpt_software_version: String; percent_ramachandran_outliers: Float; percent_ramachandran_outliers_full_length: Float; percent_rotamer_outliers: Float; percent_rotamer_outliers_full_length: Float; protein_DNA_RNA_entities: Int; DCC_R: Float; DCC_Rfree: Float }
+type PdbxVrptSummaryDiffraction { entry_id: String; ordinal: Int; IoverSigma: Float; pdbx_vrpt_diffrn_id: String }
+type PdbxVrptSummaryEm { entry_id: String; ordinal: Int; pdbx_vrpt_em_2D_projection_matching_NCC: Float; pdbx_vrpt_em_2D_projection_matching_modelled_subunit_frac: Float; pdbx_vrpt_em_map_q_score: Float }
+type PdbxVrptSummaryEntityFitToMap { entry_id: String; label_asym_id: String; label_comp_id: String; label_entity_id: String; label_seq_id: Int; pdbx_vrpt_CCC: Float; pdbx_vrpt_Q_score: Float }
+type PdbxVrptSummaryEntityGeometry { entry_id: String; label_asym_id: String; label_comp_id: String; label_entity_id: String; label_seq_id: Int; PDB_model_num: Int }
+type PdbxVrptSummaryGeometry { entry_id: String; angles_RMSZ: Float; bonds_RMSZ: Float; clashscore: Float; PDB_model_num: Int; percent_ramachandran_outliers: Float; percent_rotamer_outliers: Float }
+type PdbxVrptSummaryNmr { entry_id: String; ordinal: Int; pdbx_vrpt_cyrange_domain_no: Int; pdbx_vrpt_cyrange_method: String; pdbx_vrpt_cyrange_number_of_residues: Int }
+
+# ── Other mmCIF types ─────────────────────────────────────────────────────────
+
+type PdbxSolnScatter { entry_id: String; id: String; buffer_name: String; concentration_range: String; data_reduction_software_list: String; data_analysis_software_list: String; details: String; max_mean_cross_sectional_radii_of_gyration: Float; max_mean_cross_sectional_radii_of_gyration_esd: Float; mean_guiner_radius: Float; mean_guiner_radius_esd: Float; min_mean_cross_sectional_radii_of_gyration: Float; min_mean_cross_sectional_radii_of_gyration_esd: Float; num_time_frames: Int; protein_length: Int; sample_pH: Float; source: String; type: String }
+type PdbxSolnScatterModel { entry_id: String; id: String; scatter_id: String; conformer_selection_criteria: String; details: String; method: String; num_conformers_calculated: Int; num_conformers_submitted: Int; representative_conformer: Int; software_author_list: String; software_list: String }
+type PdbxSGProject { entry_id: String; id: String; full_name_of_center: String; initial_of_center: String; project_name: String }
+type PdbxSerialCrystallographyDataReduction { entry_id: String; diffrn_id: String; frames_failed_index: Int; frames_indexed: Int; frames_total: Int; lattices_indexed: Int; xfel_pulse_duration: Float; xfel_pulses_per_frame: Int }
+type PdbxSerialCrystallographyMeasurement { entry_id: String; diffrn_id: String; collection_date: Date; collection_time_total: Float; detector_distance: Float; diffrn_detector_id: String; focal_spot_size: Float; photons_per_pulse: Float; pulse_duration: Float; pulse_energy: Float; pulse_photon_energy: Float; source_distance: Float; source_size: Float }
+type PdbxSerialCrystallographySampleDelivery { entry_id: String; diffrn_id: String; description: String; method: String }
+type PdbxSerialCrystallographySampleDeliveryFixedTarget { entry_id: String; diffrn_id: String; crystals_per_unit: Int; description: String; details: String; motion_control: String; sample_dehydration_prevention: String; sample_solvent: String; sample_unit_size: Float; support_base: String; velocity_horizontal: Float; velocity_vertical: Float }
+type PdbxSerialCrystallographySampleDeliveryInjection { entry_id: String; diffrn_id: String; carrier_solvent: String; crystal_concentration: Float; description: String; details: String; filter_size: Float; flow_rate: Float; injector_diameter: Float; injector_nozzle: String; injector_pressure: Float; injector_temperature: Float; jet_diameter: Float; power_by: String }
+type PdbxReflnsTwin { diffrn_id: String; entry_id: String; fraction: Float; mean_I2_I_ratio: Float; mean_I2_sigma_I_ratio: Float; operator: String; type: String }
+type PdbxRelatedExpDataSet { data_format: String; data_reference: String; details: String; ordinal: Int }
+type PdbxInitialRefinementModel { accession_code: String; entity_id_list: [String]; id: Int; last_comp_id: String; source_name: String; type: String }
+type IhmEntryCollectionMapping { collection_id: Int; collection_name: String; entry_id: String; id: Int }
+type IhmExternalReferenceInfo { entry_id: String; id: Int; associated_url: String; details: String; object_count: Int; reference: String; reference_provider: String; reference_type: String }
+type MaData { content_type: String; content_type_other_details: String; id: Int; name: String }
+
+# ── Chemical Component sub-types ──────────────────────────────────────────────
+
+type PdbxChemCompAudit { action_type: String; comp_id: String; date: Date; processing_site: String }
+type PdbxChemCompDescriptor { comp_id: String; descriptor: String; program: String; program_version: String; type: String }
+type PdbxChemCompFeature { comp_id: String; source: String; type: String; value: String }
+type PdbxChemCompIdentifier { comp_id: String; identifier: String; program: String; program_version: String; type: String }
+type PdbxFamilyPrdAudit { action_type: String; annotator: String; date: Date; details: String; family_prd_id: String; processing_site: String }
+type PdbxMoleculeFeatures { details: String; name: String; prd_id: String; type: String }
+type PdbxPrdAudit { action_type: String; annotator: String; date: Date; details: String; prd_id: String; processing_site: String }
+type PdbxReferenceEntityList { component_id: Int; details: String; name: String; prd_id: String; ref_entity_id: String; type: String }
+type PdbxReferenceEntityPoly { db_code: String; db_name: String; prd_id: String; ref_entity_id: String; type: String }
+type PdbxReferenceEntityPolyLink { atom_id_1: String; atom_id_2: String; comp_id_1: String; comp_id_2: String; component_id: Int; entity_seq_num_1: Int; entity_seq_num_2: Int; link_id: Int; prd_id: String; ref_entity_id: String; value_order: String }
+type PdbxReferenceEntityPolySeq { hetero: String; mon_id: String; num: Int; observed: String; parent_mon_id: String; prd_id: String; ref_entity_id: String }
+type PdbxReferenceEntitySequence { NRP_flag: String; one_letter_codes: String; prd_id: String; ref_entity_id: String; type: String }
+type PdbxReferenceEntitySrcNat { atcc: String; db_code: String; db_name: String; ncbi_taxonomy_id: String; organism_common_name: String; organism_scientific: String; prd_id: String; ref_entity_id: String; strain: String }
+type PdbxReferenceMolecule { chem_comp_id: String; class: String; compound_details: String; description: String; formula: String; formula_weight: Float; name: String; prd_id: String; release_status: String; represent_as: String; representative_PDB_id_code: String; type: String }
+type PdbxReferenceMoleculeAnnotation { family_prd_id: String; id: Int; prd_id: String; source: String; text: String; type: String }
+type PdbxReferenceMoleculeDetails { family_prd_id: String; id: Int; source: String; source_id: String; text: String }
+type PdbxReferenceMoleculeFamily { family_prd_id: String; name: String; release_status: String; replace_family_prd_id: String }
+type PdbxReferenceMoleculeFeatures { ordinal: Int; prd_id: String; source: String; source_ordinal: Int; type: String; value: String }
+type PdbxReferenceMoleculeList { family_prd_id: String; prd_id: String }
+type PdbxReferenceMoleculeRelatedStructures { citation_id: String; db_accession: String; db_code: String; db_name: String; family_prd_id: String; formula: String; id: Int; name: String }
+type PdbxReferenceMoleculeSynonyms { family_prd_id: String; name: String; ordinal: Int; prd_id: String; source: String }
+
+# ── DrugBank ──────────────────────────────────────────────────────────────────
+
+type DrugbankContainerIdentifiers { drugbank_id: String }
+type DrugbankInfo { affected_organisms: [String]; atc_codes: [String]; brand_names: [String]; cas_number: String; description: String; drug_categories: [String]; drug_groups: [String]; drug_products: [DrugbankInfoDrugProducts]; mechanism_of_action: String; name: String; pharmacology: String; synonyms: [String] }
+type DrugbankInfoDrugProducts { approved: Boolean; country: String; ended_marketing_on: Date; labeller: String; name: String; ndc_id: String; ndc_product_code: String; source: String; started_marketing_on: Date }
+type DrugbankTarget { interaction_type: String; name: String; ordinal: Int; organism_common_name: String; reference_database_accession_code: String; reference_database_name: String; seq_one_letter_code: String; target_actions: [String] }
+
+# ── RCSB Container Identifiers ────────────────────────────────────────────────
+
+type RcsbEntryContainerIdentifiers { assembly_ids: [String]; branched_entity_ids: [String]; chem_comp_ligand_ids: [String]; chem_comp_monomers: [String]; emdb_ids: [String]; entry_id: String; model_ids: [Int]; non_polymer_entity_ids: [String]; polymer_entity_ids: [String]; pubmed_id: Int; rcsb_id: String }
+type RcsbPolymerEntityContainerIdentifiers { asym_ids: [String]; auth_asym_ids: [String]; chem_comp_monomers: [String]; chem_ref_def_ids: [String]; entity_id: String; entry_id: String; non_standard_monomers: [String]; prd_id: String; rcsb_id: String; reference_sequence_identifiers: [RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers]; uniprot_ids: [String] }
+type RcsbPolymerEntityContainerIdentifiersReferenceSequenceIdentifiers { database_accession: String; database_isoform: String; database_name: String; provenance_source: String }
+type RcsbNonpolymerEntityContainerIdentifiers { asym_ids: [String]; auth_asym_ids: [String]; chem_comp_monomers: [String]; chem_ref_def_ids: [String]; entity_id: String; entry_id: String; prd_id: String; rcsb_id: String }
+type RcsbBranchedEntityContainerIdentifiers { asym_ids: [String]; auth_asym_ids: [String]; chem_comp_monomers: [String]; entity_id: String; entry_id: String; rcsb_id: String; reference_identifiers: [RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers] }
+type RcsbBranchedEntityContainerIdentifiersReferenceIdentifiers { provenance_source: String; reference_database_accession: String; reference_database_name: String }
+type RcsbPolymerEntityInstanceContainerIdentifiers { asym_id: String; auth_asym_id: String; auth_to_entity_poly_seq_mapping: [String]; entity_id: String; entry_id: String; rcsb_id: String }
+type RcsbNonpolymerEntityInstanceContainerIdentifiers { asym_id: String; auth_asym_id: String; auth_seq_id: String; comp_id: String; entity_id: String; entry_id: String; rcsb_id: String }
+type RcsbBranchedEntityInstanceContainerIdentifiers { asym_id: String; auth_asym_id: String; entity_id: String; entry_id: String; rcsb_id: String }
+type RcsbAssemblyContainerIdentifiers { assembly_id: String; entry_id: String; rcsb_id: String }
+type RcsbInterfaceContainerIdentifiers { assembly_id: String; entry_id: String; interface_id: String; interface_partner_index_1: Int; interface_partner_index_2: Int; rcsb_id: String }
+type RcsbChemCompContainerIdentifiers { atc_codes: [String]; comp_id: String; drugbank_id: String; prd_id: String; rcsb_id: String; subcomponent_ids: [String] }
+type RcsbPubmedContainerIdentifiers { pubmed_id: Int }
+type RcsbUniprotContainerIdentifiers { reference_sequence_identifiers: [RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers]; uniprot_id: String }
+type RcsbUniprotContainerIdentifiersReferenceSequenceIdentifiers { database_accession: String; database_isoform: String; database_name: String; provenance_source: String }
+type RcsbGroupContainerIdentifiers { group_id: String; group_provenance_id: String; rcsb_id: String }
+type RcsbGroupProvenanceContainerIdentifiers { group_provenance_id: String }
+type RcsbSchemaContainerIdentifiers { collection_name: String; collection_schema_version: String; schema_name: String }
+
+# ── RCSB Info/Summary types ───────────────────────────────────────────────────
+
+type RcsbEntryInfo { assembly_count: Int; branched_entity_count: Int; cis_peptide_count: Int; deposited_atom_count: Int; deposited_hydrogen_atom_count: Int; deposited_model_count: Int; deposited_modeled_polymer_monomer_count: Int; deposited_nonpolymer_entity_instance_count: Int; deposited_polymer_entity_instance_count: Int; deposited_polymer_monomer_count: Int; deposited_solvent_atom_count: Int; deposited_unmodeled_polymer_monomer_count: Int; disulfide_bond_count: Int; entity_count: Int; experimental_method: String; experimental_method_count: Int; inter_mol_covalent_bond_count: Int; inter_mol_metalic_bond_count: Int; molecular_weight: Float; na_polymer_entity_types: String; nonpolymer_bound_components: [String]; nonpolymer_entity_count: Int; nonpolymer_molecular_weight_maximum: Float; nonpolymer_molecular_weight_minimum: Float; polymer_composition: String; polymer_entity_count: Int; polymer_entity_count_DNA: Int; polymer_entity_count_RNA: Int; polymer_entity_count_nucleic_acid: Int; polymer_entity_count_nucleic_acid_hybrid: Int; polymer_entity_count_protein: Int; polymer_entity_taxonomy_count: Int; polymer_molecular_weight_maximum: Float; polymer_molecular_weight_minimum: Float; polymer_monomer_count_maximum: Int; polymer_monomer_count_minimum: Int; resolution_combined: [Float]; selected_polymer_entity_types: String; software_programs_combined: [String]; solvent_entity_count: Int; structure_determination_methodology: String; structure_determination_methodology_priority: Int }
+type RcsbEntryInfoDiffrnResolutionHigh { provenance_source: String; value: Float }
+type RcsbAssemblyInfo { assembly_id: String; atom_count: Int; branched_atom_count: Int; branched_entity_count: Int; branched_entity_instance_count: Int; modeled_polymer_monomer_count: Int; na_polymer_entity_types: String; nonpolymer_atom_count: Int; nonpolymer_entity_count: Int; nonpolymer_entity_instance_count: Int; polymer_atom_count: Int; polymer_composition: String; polymer_entity_count: Int; polymer_entity_count_DNA: Int; polymer_entity_count_RNA: Int; polymer_entity_count_nucleic_acid: Int; polymer_entity_count_nucleic_acid_hybrid: Int; polymer_entity_count_protein: Int; polymer_entity_instance_count: Int; polymer_entity_taxonomy_count: Int; polymer_monomer_count_maximum: Int; polymer_monomer_count_minimum: Int; selected_polymer_entity_types: String; solvent_atom_count: Int; solvent_entity_count: Int; solvent_entity_instance_count: Int; total_atom_count: Int; total_entity_count: Int; unmodeled_polymer_monomer_count: Int }
+type RcsbInterfaceInfo { interface_area: Float; interface_character: String; interface_id: Int; num_core_interface_residues: Int; num_interface_residues: Int; polymer_composition: String; self_jaccard_contact_score: Float; interface_buriedSurface_area: Float }
+type RcsbPolymerInstanceInfo { conformer_id: Int; entity_poly_ref_seq_assembly_ins_count: Int; entity_poly_ref_seq_deletion_count: Int; entity_poly_ref_seq_insertion_count: Int; entity_poly_ref_seq_mutation_count: Int }
+type RcsbChemCompInfo { atom_count: Int; atom_count_chiral: Int; atom_count_heavy: Int; bond_count: Int; bond_count_aromatic: Int; initial_deposition_date: Date; initial_release_date: Date; release_status: String; revision_date: Date }
+type RcsbChemCompDescriptor { InChI: String; InChIKey: String; SMILES: String; SMILES_stereo: String }
+type RcsbGroupInfo { group_description: String; group_members_count: Int; group_members_granularity: String; group_title: String }
+type RcsbGroupStatistics { similarity_cutoff: Float; similarity_score_maximum: Float; similarity_score_minimum: Float; similarity_score_mean: Float }
+
+# ── RCSB Accession / Revision / Citation ─────────────────────────────────────
+
+type RcsbAccessionInfo { deposit_date: Date; has_released_experimental_data: String; initial_release_date: Date; major_revision: Int; minor_revision: Int; revision_date: Date; status_code: String }
+type RcsbLatestRevision { major_revision: Int; minor_revision: Int; revision_date: Date }
+type RcsbPrimaryCitation { country: String; id: String; journal_abbrev: String; journal_volume: String; page_first: String; page_last: String; pdbx_database_id_DOI: String; pdbx_database_id_PubMed: Int; rcsb_authors: [String]; rcsb_is_primary: String; rcsb_journal_abbrev: String; title: String; year: Int }
+type RcsbExternalReferences { id: String; link: String; type: String }
+type RcsbEntryGroupMembership { aggregation_method: String; group_id: String; similarity_cutoff: Float }
+
+# ── RCSB Entity types ─────────────────────────────────────────────────────────
+
+type RcsbPolymerEntity { details: String; pdbx_description: String; pdbx_ec: String; pdbx_fragment: String; pdbx_mutation: String; rcsb_ec_lineage: [RcsbPolymerEntityRcsbEcLineage]; rcsb_enzyme_class_combined: [RcsbPolymerEntityRcsbEnzymeClassCombined]; rcsb_macromolecular_names_combined: [RcsbPolymerEntityRcsbMacromolecularNamesCombined]; rcsb_polymer_name_combined: [RcsbPolymerEntityRcsbPolymerNameCombined]; src_method: String }
+type RcsbPolymerEntityRcsbEcLineage { depth: Int; id: String; name: String }
+type RcsbPolymerEntityRcsbEnzymeClassCombined { depth: Int; ec: String; provenance_source: String }
+type RcsbPolymerEntityRcsbMacromolecularNamesCombined { filterable_name: String; name: String; provenance_source: String; provenance_source_id: String }
+type RcsbPolymerEntityRcsbPolymerNameCombined { filterable_name: String; name: String; provenance_source: String; provenance_source_id: String }
+type RcsbPolymerEntityKeywords { text: String }
+type RcsbPolymerEntityNameCom { value: String }
+type RcsbPolymerEntityNameSys { name: String; system: String }
+type RcsbNonpolymerEntity { details: String; formula_weight: Float; pdbx_description: String; pdbx_number_of_molecules: Int }
+type RcsbNonpolymerEntityKeywords { text: String }
+type RcsbNonpolymerEntityNameCom { value: String }
+type RcsbBranchedEntity { details: String; formula_weight: Float; pdbx_description: String; pdbx_number_of_molecules: Int }
+type RcsbBranchedEntityKeywords { text: String }
+type RcsbBranchedEntityNameCom { value: String }
+type RcsbBranchedEntityNameSys { name: String; system: String }
+
+# ── RCSB Source Organism ──────────────────────────────────────────────────────
+
+type RcsbEntitySourceOrganism { beg_seq_num: Int; common_name: String; end_seq_num: Int; ncbi_common_name: String; ncbi_parent_scientific_name: String; ncbi_scientific_name: String; ncbi_taxonomy_id: Int; organism_common_name: String; provenance_source: String; rcsb_gene_name: [RcsbEntitySourceOrganismRcsbGeneName]; scientific_name: String; source_type: String; taxonomy_lineage: [RcsbEntitySourceOrganismTaxonomyLineage] }
+type RcsbEntitySourceOrganismRcsbGeneName { provenance_source: String; value: String }
+type RcsbEntitySourceOrganismTaxonomyLineage { depth: Int; id: String; name: String }
+type RcsbEntityHostOrganism { beg_seq_num: Int; common_name: String; end_seq_num: Int; ncbi_common_name: String; ncbi_scientific_name: String; ncbi_taxonomy_id: Int; provenance_source: String; scientific_name: String; taxonomy_lineage: [RcsbEntityHostOrganismTaxonomyLineage] }
+type RcsbEntityHostOrganismTaxonomyLineage { depth: Int; id: String; name: String }
+type RcsbGenomicLineage { depth: Int; id: String; name: String }
+type RcsbMembraneLineage { depth: Int; id: String; name: String }
+
+# ── RCSB Cluster / Alignment ──────────────────────────────────────────────────
+
+type RcsbClusterMembership { cluster_id: Int; identity: Int }
+type RcsbClusterFlexibility { avg_rmsd: Float; label_asym_id: String; link: String; max_rmsd: Float; provenance_source: String }
+type RcsbPolymerEntityAlign { aligned_regions: [RcsbPolymerEntityAlignAlignedRegions]; provenance_source: String; reference_database_accession: String; reference_database_isoform: String; reference_database_name: String }
+type RcsbPolymerEntityAlignAlignedRegions { entity_beg_seq_id: Int; length: Int; ref_beg_seq_id: Int }
+type RcsbPolymerEntityGroupMembership { group_id: String; provenance_source: String; sequence_identity: Float }
+type RcsbPolymerEntityGroupMembersRankings { group_members: [RcsbPolymerEntityGroupMembersRankingsGroupMembers]; ranking_criteria_type: String }
+type RcsbPolymerEntityGroupMembersRankingsGroupMembers { entity_id: String; entry_id: String; rank: Int }
+type RcsbPolymerEntityGroupSequenceAlignment { abstract_reference: RcsbPolymerEntityGroupSequenceAlignmentAbstractReference; group_members_alignment: [RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment] }
+type RcsbPolymerEntityGroupSequenceAlignmentAbstractReference { length: Int; sequence: String }
+type RcsbPolymerEntityGroupSequenceAlignmentGroupMembersAlignment { aligned_regions: [RcsbPolymerEntityGroupMembershipAlignedRegions]; entity_id: String; entry_id: String }
+type RcsbPolymerEntityGroupMembershipAlignedRegions { entity_beg_seq_id: Int; length: Int; ref_beg_seq_id: Int }
+
+# ── RCSB Annotation / Feature types ──────────────────────────────────────────
+
+type RcsbPolymerEntityAnnotation { annotation_id: String; annotation_lineage: [RcsbPolymerEntityAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbPolymerEntityAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbPolymerEntityAnnotationAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbPolymerEntityFeature { additional_properties: [RcsbPolymerEntityFeatureAdditionalProperties]; description: String; feature_id: String; feature_positions: [RcsbPolymerEntityFeatureFeaturePositions]; name: String; provenance_source: String; reference_scheme: String; type: String }
+type RcsbPolymerEntityFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbPolymerEntityFeatureFeaturePositions { beg_comp_id: String; beg_seq_id: Int; end_seq_id: Int; open_begin: Boolean; open_end: Boolean; values: [Float] }
+type RcsbPolymerEntityFeatureSummary { count: Int; coverage: Float; maximum_length: Int; maximum_value: Float; minimum_length: Int; minimum_value: Float; type: String }
+type RcsbNonpolymerEntityAnnotation { annotation_id: String; annotation_lineage: [RcsbNonpolymerEntityAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbNonpolymerEntityAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbNonpolymerEntityFeature { additional_properties: [RcsbNonpolymerEntityFeatureAdditionalProperties]; description: String; feature_id: String; name: String; provenance_source: String; type: String }
+type RcsbNonpolymerEntityFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbNonpolymerEntityFeatureSummary { count: Int; maximum_value: Float; minimum_value: Float; type: String }
+type RcsbBranchedEntityAnnotation { annotation_id: String; annotation_lineage: [RcsbBranchedEntityAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbBranchedEntityAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbBranchedEntityFeature { additional_properties: [RcsbBranchedEntityFeatureAdditionalProperties]; description: String; feature_id: String; feature_positions: [RcsbBranchedEntityFeatureFeaturePositions]; name: String; provenance_source: String; reference_scheme: String; type: String }
+type RcsbBranchedEntityFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbBranchedEntityFeatureFeaturePositions { beg_comp_id: String; beg_seq_id: Int; end_seq_id: Int; open_begin: Boolean; open_end: Boolean; values: [Float] }
+type RcsbBranchedEntityFeatureSummary { count: Int; coverage: Float; maximum_length: Int; maximum_value: Float; minimum_length: Int; minimum_value: Float; type: String }
+type RcsbAssemblyAnnotation { annotation_id: String; description: String; name: String; provenance_source: String; type: String }
+type RcsbAssemblyAnnotationAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbAssemblyFeature { additional_properties: [RcsbAssemblyFeatureAdditionalProperties]; description: String; feature_id: String; feature_positions: [RcsbAssemblyFeatureFeaturePositions]; name: String; provenance_source: String; type: String }
+type RcsbAssemblyFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbAssemblyFeatureFeaturePositions { beg_seq_id: Int; end_seq_id: Int }
+type RcsbChemCompAnnotation { annotation_id: String; annotation_lineage: [RcsbChemCompAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbChemCompAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbChemCompRelated { comp_id: String; ordinal: Int; related_mapping_method: String; resource_accession_code: String; resource_name: String }
+type RcsbChemCompSynonyms { comp_id: String; name: String; provenance_source: String; type: String }
+type RcsbChemCompTarget { comp_id: String; id: String; interaction_type: String; name: String; provenance_source: String; reference_database_accession_code: String; reference_database_name: String; target_actions: [String] }
+
+# ── RCSB Instance Annotation/Feature ─────────────────────────────────────────
+
+type RcsbPolymerInstanceAnnotation { annotation_id: String; annotation_lineage: [RcsbPolymerInstanceAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbPolymerInstanceAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbPolymerInstanceFeature { additional_properties: [RcsbPolymerInstanceFeatureAdditionalProperties]; description: String; feature_id: String; feature_positions: [RcsbPolymerInstanceFeatureFeaturePositions]; name: String; provenance_source: String; reference_scheme: String; type: String }
+type RcsbPolymerInstanceFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbPolymerInstanceFeatureFeaturePositions { beg_comp_id: String; beg_seq_id: Int; end_seq_id: Int; open_begin: Boolean; open_end: Boolean; values: [Float] }
+type RcsbPolymerInstanceFeatureSummary { count: Int; coverage: Float; maximum_length: Int; maximum_value: Float; minimum_length: Int; minimum_value: Float; type: String }
+type RcsbNonpolymerInstanceAnnotation { annotation_id: String; annotation_lineage: [RcsbNonpolymerInstanceAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbNonpolymerInstanceAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbNonpolymerInstanceFeature { additional_properties: [RcsbNonpolymerInstanceFeatureAdditionalProperties]; description: String; feature_id: String; name: String; provenance_source: String; type: String }
+type RcsbNonpolymerInstanceFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbNonpolymerInstanceFeatureSummary { count: Int; maximum_value: Float; minimum_value: Float; type: String }
+type RcsbNonpolymerInstanceValidationScore { alt_id: String; is_subject_of_investigation: Boolean; is_subject_of_investigation_provenance: String; LLDF: Float; mogul_angle_outlier: Boolean; mogul_angles_RMSZ: Float; mogul_bond_outlier: Boolean; mogul_bonds_RMSZ: Float; RSR: Float; RSRCC: Float; RSRZ: Float; stereo_outlier: Boolean; type: String }
+type RcsbBranchedInstanceAnnotation { annotation_id: String; annotation_lineage: [RcsbBranchedInstanceAnnotationAnnotationLineage]; description: String; name: String; provenance_source: String; type: String }
+type RcsbBranchedInstanceAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbBranchedInstanceFeature { additional_properties: [RcsbBranchedInstanceFeatureAdditionalProperties]; description: String; feature_id: String; feature_positions: [RcsbBranchedInstanceFeatureFeaturePositions]; feature_value: [RcsbBranchedInstanceFeatureFeatureValue]; name: String; provenance_source: String; reference_scheme: String; type: String }
+type RcsbBranchedInstanceFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbBranchedInstanceFeatureFeaturePositions { beg_comp_id: String; beg_seq_id: Int; end_seq_id: Int; open_begin: Boolean; open_end: Boolean }
+type RcsbBranchedInstanceFeatureFeatureValue { comp_id: String; details: String; reference: String; reported: String; uncertainty: Float; uncertainty_type: String }
+type RcsbBranchedInstanceFeatureSummary { count: Int; coverage: Float; maximum_length: Int; maximum_value: Float; minimum_length: Int; minimum_value: Float; type: String }
+
+# ── RCSB Struct Conn ──────────────────────────────────────────────────────────
+
+type RcsbPolymerStructConn { connect_partner: RcsbPolymerStructConnConnectPartner; connect_target: RcsbPolymerStructConnConnectTarget; connect_type: String; description: String; id: String; length: Float; pdbx_dist_value: Float; pdbx_leaving_atom_flag: String; pdbx_role: String; pdbx_value_order: String; role: String }
+type RcsbPolymerStructConnConnectPartner { label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String; label_seq_id: Int }
+type RcsbPolymerStructConnConnectTarget { auth_asym_id: String; auth_seq_id: String; label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String; label_seq_id: Int }
+type RcsbNonpolymerStructConn { connect_partner: RcsbNonpolymerStructConnConnectPartner; connect_target: RcsbNonpolymerStructConnConnectTarget; connect_type: String; description: String; id: String; length: Float; pdbx_dist_value: Float; pdbx_leaving_atom_flag: String; pdbx_role: String; pdbx_value_order: String; role: String }
+type RcsbNonpolymerStructConnConnectPartner { label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String; label_seq_id: Int }
+type RcsbNonpolymerStructConnConnectTarget { auth_asym_id: String; auth_seq_id: String; label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String }
+type RcsbBranchedStructConn { connect_partner: RcsbBranchedStructConnConnectPartner; connect_target: RcsbBranchedStructConnConnectTarget; connect_type: String; description: String; id: String; length: Float; pdbx_dist_value: Float; pdbx_leaving_atom_flag: String; pdbx_role: String; pdbx_value_order: String; role: String }
+type RcsbBranchedStructConnConnectPartner { label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String; label_seq_id: Int }
+type RcsbBranchedStructConnConnectTarget { auth_asym_id: String; auth_seq_id: String; label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String; label_seq_id: Int }
+
+# ── RCSB Interface ────────────────────────────────────────────────────────────
+
+type RcsbInterfacePartner { interface_partner_feature: [RcsbInterfacePartnerInterfacePartnerFeature]; interface_partner_identifier: RcsbInterfacePartnerInterfacePartnerIdentifier }
+type RcsbInterfacePartnerInterfacePartnerFeature { additional_properties: [InterfacePartnerFeatureAdditionalProperties]; feature_id: String; feature_positions: [InterfacePartnerFeatureFeaturePositions]; name: String; provenance_source: String; type: String }
+type InterfacePartnerFeatureAdditionalProperties { name: String; values: [ObjectScalar] }
+type InterfacePartnerFeatureFeaturePositions { beg_seq_id: Int; end_seq_id: Int; interfaces_ids: [Int] }
+type RcsbInterfacePartnerInterfacePartnerIdentifier { asym_id: String; auth_asym_id: String; entity_id: String }
+
+# ── RCSB Symmetry ─────────────────────────────────────────────────────────────
+
+type RcsbStructSymmetry { clusters: [RcsbStructSymmetryClusters]; kind: String; oligomeric_state: String; rotation_axes: [RcsbStructSymmetryRotationAxes]; stoichiometry: [String]; symbol: String; type: String }
+type RcsbStructSymmetryClusters { avg_rmsd: Float; members: [ClustersMembers] }
+type ClustersMembers { asym_id: String; pdbx_struct_oper_list_ids: [String] }
+type RcsbStructSymmetryRotationAxes { order: Int; start: [Float]; end: [Float] }
+type RcsbStructSymmetryLineage { depth: Int; id: String; name: String }
+
+# ── RCSB Binding / Ligand ─────────────────────────────────────────────────────
+
+type RcsbBindingAffinity { comp_id: String; link: String; provenance_source: String; reference_sequence_identity: Float; symbol: String; type: String; unit: String; value: Float }
+type RcsbLigandNeighbors { atom_id: String; auth_asym_id: String; auth_seq_id: String; comp_id: String; is_subject: Boolean; label_alt_id: String; label_asym_id: String; label_comp_id: String; label_seq_id: Int; link_type: String; symmetry: String; target_is_auth_seq: Boolean }
+type RcsbTargetNeighbors { atom_id: String; auth_asym_id: String; auth_seq_id: String; comp_id: String; distance: Float; is_modified: Boolean; label_alt_id: String; label_asym_id: String; label_atom_id: String; label_comp_id: String; label_seq_id: Int; symmetry: String; target_is_auth_seq: Boolean }
+type RcsbTargetCofactors { cofactor_chem_comp_id: String; cofactor_description: String; cofactor_formula_weight: Float; cofactor_in_ChEMBL: Boolean; cofactor_InChIKey: String; cofactor_SMILES: String; neighbor_count: Int; pharmacology_actions: [String]; provenance_source: String; reference_database_accession_code: String; reference_database_name: String; target_name: String }
+type RcsbRelatedTargetReferences { aligned_target: [RcsbRelatedTargetReferencesAlignedTarget]; provenance_source: String; related_resource_accession_code: String; related_resource_name: String; related_resource_version: String; target_taxonomy_id: Int }
+type RcsbRelatedTargetReferencesAlignedTarget { entity_beg_seq_id: Int; length: Int; ref_beg_seq_id: Int }
+
+# ── UniProt ───────────────────────────────────────────────────────────────────
+
+type RcsbUniprotProtein { ec: [RcsbUniprotProteinEc]; function: RcsbUniprotProteinFunction; gene: [RcsbUniprotProteinGene]; name: RcsbUniprotProteinName; source_organism: RcsbUniprotProteinSourceOrganism }
+type RcsbUniprotProteinEc { number: String; provenance_source: String }
+type RcsbUniprotProteinFunction { details: String; provenance_source: String }
+type RcsbUniprotProteinGene { name: [GeneName] }
+type GeneName { provenance_source: String; type: String; value: String }
+type RcsbUniprotProteinName { provenance_source: String; value: String }
+type RcsbUniprotProteinSourceOrganism { common_name: String; ncbi_taxonomy_id: Int; provenance_source: String; scientific_name: String }
+type RcsbUniprotAnnotation { annotation_id: String; annotation_lineage: [RcsbUniprotAnnotationAnnotationLineage]; additional_properties: [RcsbUniprotAnnotationAdditionalProperties]; description: String; name: String; provenance_source: String; type: String }
+type RcsbUniprotAnnotationAnnotationLineage { depth: Int; id: String; name: String }
+type RcsbUniprotAnnotationAdditionalProperties { name: String; values: [ObjectScalar] }
+type RcsbUniprotExternalReference { provenance_source: String; reference_id: String; reference_name: String }
+type RcsbUniprotFeature { additional_properties: [ObjectScalar]; description: String; feature_id: String; feature_positions: [RcsbUniprotFeatureFeaturePositions]; feature_value: [ObjectScalar]; name: String; provenance_source: String; reference_scheme: String; type: String }
+type RcsbUniprotFeatureFeaturePositions { beg_seq_id: Int; end_seq_id: Int; open_begin: Boolean; open_end: Boolean }
+type RcsbUniprotKeyword { id: String; name: String; provenance_source: String }
+type RcsbUniprotAlignments { core_entity_alignments: [RcsbUniprotAlignmentsCoreEntityAlignments] }
+type RcsbUniprotAlignmentsCoreEntityAlignments { aligned_regions: [CoreEntityAlignmentsAlignedRegions]; core_entity_identifiers: CoreEntityAlignmentsCoreEntityIdentifiers; scores: [CoreEntityAlignmentsScores] }
+type CoreEntityAlignmentsAlignedRegions { entity_beg_seq_id: Int; length: Int; ref_beg_seq_id: Int }
+type CoreEntityAlignmentsCoreEntityIdentifiers { entity_id: String; entry_id: String }
+type CoreEntityAlignmentsScores { name: String; value: Float }
+
+# ── PubMed ────────────────────────────────────────────────────────────────────
+
+type RcsbPubmedMeshDescriptorsLineage { depth: Int; id: String; name: String }
+
+# ── PFAM ──────────────────────────────────────────────────────────────────────
+
+type RcsbPfamContainerIdentifiers { pfam_id: String }
+
+# ── Group Aggregation ─────────────────────────────────────────────────────────
+
+type RcsbGroupAccessionInfo { deposit_date: Date; id: String; initial_release_date: Date; major_revision: Int; minor_revision: Int; revision_date: Date; status_code: String }
+type RcsbGroupAggregationMethod { method: [RcsbGroupAggregationMethodMethod]; similarity_criteria: [RcsbGroupAggregationMethodSimilarityCriteria] }
+type RcsbGroupAggregationMethodMethod { name: String; software_name: String; software_version: String }
+type RcsbGroupAggregationMethodSimilarityCriteria { name: String; value: Float }
+type RcsbGroupRelated { group_id: String; group_provenance_id: String; resource_accession_code: String; resource_name: String }
+
+# ── Computed Structure Model (CSM) ────────────────────────────────────────────
+
+type RcsbCompModelProvenance { entry_id: String; source_db: String; source_url: String }
+type RcsbMaQaMetricGlobal { ma_qa_metric_global: [RcsbMaQaMetricGlobalMaQaMetricGlobal] }
+type RcsbMaQaMetricGlobalMaQaMetricGlobal { description: String; name: String; type: String; value: Float }
+type RcsbIhmDatasetList { dataset_group_id: Int; id: Int; url: String; data_type: String; database_name: String; version: String }
+type RcsbIhmDatasetSourceDbReference { db_accession: String; db_name: String; id: Int; seq_db_align_beg: Int; seq_db_align_end: Int; seq_db_isoform: String; version: String }
+type MethodDetails { class: String; details: String; name: String; software_list: [String]; software_version: String; step: String; type: String }
+
+# ── Repository Holdings ───────────────────────────────────────────────────────
+
+type RcsbRepositoryHoldingsCurrent { repository_content_types: [String] }
+type RcsbRepositoryHoldingsCurrentEntryContainerIdentifiers { assembly_ids: [String]; entry_id: String; rcsb_id: String }
+
+# ── Current / Group Entry sub-types ──────────────────────────────────────────
+
+type CurrentEntry { rcsb_id: String; status: String }
+type GroupMembersAlignmentScores { name: String; value: Float }
+type GroupProvenance { rcsb_group_provenance_container_identifiers: RcsbGroupProvenanceContainerIdentifiers }
+type RcsbBirdCitation { authors: [String]; id: String; journal_abbrev: String; journal_id_ASTM: String; journal_id_ISSN: String; journal_id_CSD: Int; journal_volume: String; language: String; page_first: String; page_last: String; pdbx_database_id_DOI: String; pdbx_database_id_PubMed: Int; title: String; year: Int }

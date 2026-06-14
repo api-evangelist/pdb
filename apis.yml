@@ -1,27 +1,26 @@
 aid: pdb
 name: RCSB PDB
-description: >-
-  RCSB Protein Data Bank (RCSB PDB) is a scientific data resource providing free,
-  open access to the 3D structural data of biological macromolecules including proteins,
-  nucleic acids, and complex assemblies. It serves researchers worldwide through
-  a suite of programmatic APIs covering data retrieval, full-text and attribute search,
-  sequence and structure similarity search, molecular model data access, volumetric
+description: RCSB Protein Data Bank (RCSB PDB) is a scientific data resource providing
+  free, open access to the 3D structural data of biological macromolecules including
+  proteins, nucleic acids, and complex assemblies. It serves researchers worldwide
+  through a suite of programmatic APIs covering data retrieval, full-text and attribute
+  search, sequence and structure similarity search, molecular model data access, volumetric
   electron density maps, sequence coordinate alignments, and structure alignment calculations.
 image: https://www.rcsb.org/img/rcsb_logo.png
 url: https://raw.githubusercontent.com/api-evangelist/pdb/refs/heads/main/apis.yml
 humanURL: https://www.rcsb.org
 baseURL: https://data.rcsb.org
 tags:
-  - Structural Biology
-  - Proteomics
-  - Bioinformatics
-  - Genomics
-  - Life Sciences
-  - Open Data
-  - Research
-  - Macromolecules
-  - Crystallography
-  - NMR
+- Structural Biology
+- Proteomics
+- Bioinformatics
+- Genomics
+- Life Sciences
+- Open Data
+- Research
+- Macromolecules
+- Crystallography
+- NMR
 created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.19'
@@ -29,199 +28,190 @@ type: Index
 position: Producer
 access: Open
 apis:
-  - aid: pdb:rcsb-pdb-data-api
-    name: RCSB PDB Data API
-    description: >-
-      Provides structured access to the complete RCSB PDB holdings via REST and GraphQL
-      interfaces. Given a known PDB identifier, callers can retrieve rich JSON metadata
-      about entries, polymer entities, non-polymer entities (ligands), polymer entity
-      instances (chains), assemblies, branched entities, and chemical components. The
-      REST surface mirrors an OpenAPI/ReDoc contract while the GraphQL endpoint supports
-      flexible field selection and nested queries.
-    humanURL: https://data.rcsb.org
-    baseURL: https://data.rcsb.org/rest/v1/core
-    tags:
-      - Structural Biology
-      - Protein Data
-      - GraphQL
-      - REST
-      - JSON
-    properties:
-      - type: Documentation
-        url: https://data.rcsb.org/redoc/index.html
-      - type: GraphQL
-        url: https://data.rcsb.org/graphql
-      - type: GraphQLExplorer
-        url: https://data.rcsb.org/graphiql/index.html
-      - type: PythonSDK
-        url: https://github.com/rcsb/py-rcsb-api
-      - type: JavaScriptSDK
-        url: https://github.com/rcsb/rcsb-api-tools
-    contact:
-      - type: Email
-        url: mailto:info@rcsb.org
-      - type: MailingList
-        url: mailto:api+subscribe@rcsb.org
-
-  - aid: pdb:rcsb-pdb-search-api
-    name: RCSB PDB Search API
-    description: >-
-      Full-featured search API for locating PDB identifiers that match complex query
-      conditions. Supports text attribute searches, BLAST-like sequence similarity
-      (protein, DNA, RNA), chemical small-molecule queries (formula, SMILES, InChI),
-      3D structure embedding searches, sequence motif searches, structural motif searches,
-      and unstructured full-text searches. Results support pagination (up to 10,000
-      hits), sorting, faceted aggregations, and grouping by sequence identity or
-      UniProt accession. Returns entries, assemblies, polymer entities, non-polymer
-      entities, polymer instances, or chemical component identifiers.
-    humanURL: https://search.rcsb.org
-    baseURL: https://search.rcsb.org/rcsbsearch/v2/query
-    tags:
-      - Search
-      - Sequence Search
-      - Structure Search
-      - Chemical Search
-      - BLAST
-      - SMILES
-    properties:
-      - type: Documentation
-        url: https://search.rcsb.org/redoc/index.html
-      - type: GettingStarted
-        url: https://www.rcsb.org/docs/programmatic-access/web-apis-overview
-      - type: OpenAPI
-        url: openapi/rcsb-pdb-search-api.json
-    contact:
-      - type: Email
-        url: mailto:info@rcsb.org
-      - type: MailingList
-        url: mailto:api+subscribe@rcsb.org
-
-  - aid: pdb:rcsb-pdb-model-server-api
-    name: RCSB PDB ModelServer API
-    description: >-
-      Provides on-demand access to subsets of macromolecular model data stored in
-      PDBx/mmCIF format. Callers can request individual chains, residue ranges, ligand
-      environments, or symmetry-expanded assemblies without downloading full structure
-      files, enabling efficient downstream visualization and analysis workflows.
-    humanURL: https://models.rcsb.org
-    baseURL: https://models.rcsb.org
-    tags:
-      - Macromolecular Models
-      - mmCIF
-      - Structure Coordinates
-      - Subset Access
-    properties:
-      - type: Documentation
-        url: https://models.rcsb.org
-      - type: OpenAPI
-        url: openapi/rcsb-pdb-model-server-api.json
-    contact:
-      - type: Email
-        url: mailto:info@rcsb.org
-
-  - aid: pdb:rcsb-pdb-volume-server-api
-    name: RCSB PDB VolumeServer API
-    description: >-
-      Delivers subsets of volumetric electron density and cryo-EM map data associated
-      with PDB entries. Instead of downloading large map files, researchers can query
-      a specific region around a ligand or residue and retrieve only the relevant density
-      slice, accelerating interactive visualization in tools like Mol*.
-    humanURL: https://maps.rcsb.org
-    baseURL: https://maps.rcsb.org
-    tags:
-      - Electron Density
-      - Cryo-EM
-      - Volumetric Data
-      - Maps
-    properties:
-      - type: Documentation
-        url: https://maps.rcsb.org
-      - type: OpenAPI
-        url: openapi/rcsb-pdb-volume-server-api.json
-    contact:
-      - type: Email
-        url: mailto:info@rcsb.org
-
-  - aid: pdb:rcsb-pdb-sequence-coordinates-api
-    name: RCSB PDB Sequence Coordinates API
-    description: >-
-      GraphQL service providing sequence-level alignments between structural databases
-      and external sequence resources. Exposes two core queries — alignment and
-      annotations — enabling callers to map PDB chain positions to UniProt, NCBI
-      RefSeq (protein and genomic), CATH, SCOPe, and Computed Structure Models (CSMs).
-      Replaces the legacy 1D Coordinates Service.
-    humanURL: https://sequence-coordinates.rcsb.org
-    baseURL: https://sequence-coordinates.rcsb.org/graphql
-    tags:
-      - Sequence Alignment
-      - UniProt
-      - NCBI
-      - GraphQL
-      - Annotations
-    properties:
-      - type: Documentation
-        url: https://sequence-coordinates.rcsb.org
-      - type: GraphQLExplorer
-        url: https://sequence-coordinates.rcsb.org/graphiql/index.html
-    contact:
-      - type: Email
-        url: mailto:info@rcsb.org
-
-  - aid: pdb:rcsb-pdb-alignment-api
-    name: RCSB PDB Structure Alignment API
-    description: >-
-      Asynchronous REST API that performs programmatic structure alignment calculations
-      between PDB entries or user-supplied coordinate files. Callers submit an alignment
-      job via POST /submit (accepting PDBx/mmCIF, BinaryCIF, or legacy PDB format,
-      with optional gzip compression), receive a UUID ticket, and poll GET /results
-      for status and output. Enables large-scale structural comparison workflows
-      without manual interaction with the RCSB PDB website.
-    humanURL: https://alignment.rcsb.org
-    baseURL: https://alignment.rcsb.org
-    tags:
-      - Structure Alignment
-      - Structural Comparison
-      - Asynchronous
-      - Computational
-    properties:
-      - type: Documentation
-        url: https://alignment.rcsb.org/api-reference.html
-      - type: QueryEditor
-        url: https://alignment.rcsb.org/query-editor.html
-    contact:
-      - type: Email
-        url: mailto:info@rcsb.org
-
-common:
-  - type: JSONLd
-    url: json-ld/pdb.json
-  - type: Website
-    url: https://www.rcsb.org
+- aid: pdb:rcsb-pdb-data-api
+  name: RCSB PDB Data API
+  description: Provides structured access to the complete RCSB PDB holdings via REST
+    and GraphQL interfaces. Given a known PDB identifier, callers can retrieve rich
+    JSON metadata about entries, polymer entities, non-polymer entities (ligands),
+    polymer entity instances (chains), assemblies, branched entities, and chemical
+    components. The REST surface mirrors an OpenAPI/ReDoc contract while the GraphQL
+    endpoint supports flexible field selection and nested queries.
+  humanURL: https://data.rcsb.org
+  baseURL: https://data.rcsb.org/rest/v1/core
+  tags:
+  - Structural Biology
+  - Protein Data
+  - GraphQL
+  - REST
+  - JSON
+  properties:
   - type: Documentation
-    url: https://www.rcsb.org/docs/programmatic-access/web-apis-overview
-  - type: GettingStarted
-    url: https://www.rcsb.org/docs/programmatic-access
-  - type: FileDownloads
-    url: https://files.wwpdb.org
-  - type: GitHub
-    url: https://github.com/rcsb
+    url: https://data.rcsb.org/redoc/index.html
+  - type: GraphQL
+    url: https://data.rcsb.org/graphql
+  - type: GraphQLExplorer
+    url: https://data.rcsb.org/graphiql/index.html
   - type: PythonSDK
     url: https://github.com/rcsb/py-rcsb-api
   - type: JavaScriptSDK
     url: https://github.com/rcsb/rcsb-api-tools
-  - type: StatusPage
-    url: https://www.rcsb.org/pages/policies
-  - type: RateLimits
-    url: rate-limits/pdb-rate-limits.yml
-  - type: Plans
-    url: plans/pdb-plans-pricing.yml
-  - type: FinOps
-    url: finops/pdb-finops.yml
-  - type: Contact
+  - type: GraphQLSchema
+    url: graphql/pdb-schema.graphql
+  - type: GraphQLDocumentation
+    url: graphql/pdb-graphql.md
+  contact:
+  - type: Email
     url: mailto:info@rcsb.org
   - type: MailingList
-    url: https://groups.google.com/g/rcsb-pdb-api-announcements
-
+    url: mailto:api+subscribe@rcsb.org
+- aid: pdb:rcsb-pdb-search-api
+  name: RCSB PDB Search API
+  description: Full-featured search API for locating PDB identifiers that match complex
+    query conditions. Supports text attribute searches, BLAST-like sequence similarity
+    (protein, DNA, RNA), chemical small-molecule queries (formula, SMILES, InChI),
+    3D structure embedding searches, sequence motif searches, structural motif searches,
+    and unstructured full-text searches. Results support pagination (up to 10,000
+    hits), sorting, faceted aggregations, and grouping by sequence identity or UniProt
+    accession. Returns entries, assemblies, polymer entities, non-polymer entities,
+    polymer instances, or chemical component identifiers.
+  humanURL: https://search.rcsb.org
+  baseURL: https://search.rcsb.org/rcsbsearch/v2/query
+  tags:
+  - Search
+  - Sequence Search
+  - Structure Search
+  - Chemical Search
+  - BLAST
+  - SMILES
+  properties:
+  - type: Documentation
+    url: https://search.rcsb.org/redoc/index.html
+  - type: GettingStarted
+    url: https://www.rcsb.org/docs/programmatic-access/web-apis-overview
+  - type: OpenAPI
+    url: openapi/rcsb-pdb-search-api.json
+  contact:
+  - type: Email
+    url: mailto:info@rcsb.org
+  - type: MailingList
+    url: mailto:api+subscribe@rcsb.org
+- aid: pdb:rcsb-pdb-model-server-api
+  name: RCSB PDB ModelServer API
+  description: Provides on-demand access to subsets of macromolecular model data stored
+    in PDBx/mmCIF format. Callers can request individual chains, residue ranges, ligand
+    environments, or symmetry-expanded assemblies without downloading full structure
+    files, enabling efficient downstream visualization and analysis workflows.
+  humanURL: https://models.rcsb.org
+  baseURL: https://models.rcsb.org
+  tags:
+  - Macromolecular Models
+  - mmCIF
+  - Structure Coordinates
+  - Subset Access
+  properties:
+  - type: Documentation
+    url: https://models.rcsb.org
+  - type: OpenAPI
+    url: openapi/rcsb-pdb-model-server-api.json
+  contact:
+  - type: Email
+    url: mailto:info@rcsb.org
+- aid: pdb:rcsb-pdb-volume-server-api
+  name: RCSB PDB VolumeServer API
+  description: Delivers subsets of volumetric electron density and cryo-EM map data
+    associated with PDB entries. Instead of downloading large map files, researchers
+    can query a specific region around a ligand or residue and retrieve only the relevant
+    density slice, accelerating interactive visualization in tools like Mol*.
+  humanURL: https://maps.rcsb.org
+  baseURL: https://maps.rcsb.org
+  tags:
+  - Electron Density
+  - Cryo-EM
+  - Volumetric Data
+  - Maps
+  properties:
+  - type: Documentation
+    url: https://maps.rcsb.org
+  - type: OpenAPI
+    url: openapi/rcsb-pdb-volume-server-api.json
+  contact:
+  - type: Email
+    url: mailto:info@rcsb.org
+- aid: pdb:rcsb-pdb-sequence-coordinates-api
+  name: RCSB PDB Sequence Coordinates API
+  description: GraphQL service providing sequence-level alignments between structural
+    databases and external sequence resources. Exposes two core queries — alignment
+    and annotations — enabling callers to map PDB chain positions to UniProt, NCBI
+    RefSeq (protein and genomic), CATH, SCOPe, and Computed Structure Models (CSMs).
+    Replaces the legacy 1D Coordinates Service.
+  humanURL: https://sequence-coordinates.rcsb.org
+  baseURL: https://sequence-coordinates.rcsb.org/graphql
+  tags:
+  - Sequence Alignment
+  - UniProt
+  - NCBI
+  - GraphQL
+  - Annotations
+  properties:
+  - type: Documentation
+    url: https://sequence-coordinates.rcsb.org
+  - type: GraphQLExplorer
+    url: https://sequence-coordinates.rcsb.org/graphiql/index.html
+  contact:
+  - type: Email
+    url: mailto:info@rcsb.org
+- aid: pdb:rcsb-pdb-alignment-api
+  name: RCSB PDB Structure Alignment API
+  description: Asynchronous REST API that performs programmatic structure alignment
+    calculations between PDB entries or user-supplied coordinate files. Callers submit
+    an alignment job via POST /submit (accepting PDBx/mmCIF, BinaryCIF, or legacy
+    PDB format, with optional gzip compression), receive a UUID ticket, and poll GET
+    /results for status and output. Enables large-scale structural comparison workflows
+    without manual interaction with the RCSB PDB website.
+  humanURL: https://alignment.rcsb.org
+  baseURL: https://alignment.rcsb.org
+  tags:
+  - Structure Alignment
+  - Structural Comparison
+  - Asynchronous
+  - Computational
+  properties:
+  - type: Documentation
+    url: https://alignment.rcsb.org/api-reference.html
+  - type: QueryEditor
+    url: https://alignment.rcsb.org/query-editor.html
+  contact:
+  - type: Email
+    url: mailto:info@rcsb.org
+common:
+- type: JSONLd
+  url: json-ld/pdb.json
+- type: Website
+  url: https://www.rcsb.org
+- type: Documentation
+  url: https://www.rcsb.org/docs/programmatic-access/web-apis-overview
+- type: GettingStarted
+  url: https://www.rcsb.org/docs/programmatic-access
+- type: FileDownloads
+  url: https://files.wwpdb.org
+- type: GitHub
+  url: https://github.com/rcsb
+- type: PythonSDK
+  url: https://github.com/rcsb/py-rcsb-api
+- type: JavaScriptSDK
+  url: https://github.com/rcsb/rcsb-api-tools
+- type: StatusPage
+  url: https://www.rcsb.org/pages/policies
+- type: RateLimits
+  url: rate-limits/pdb-rate-limits.yml
+- type: Plans
+  url: plans/pdb-plans-pricing.yml
+- type: FinOps
+  url: finops/pdb-finops.yml
+- type: Contact
+  url: mailto:info@rcsb.org
+- type: MailingList
+  url: https://groups.google.com/g/rcsb-pdb-api-announcements
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
