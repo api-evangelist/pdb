@@ -184,7 +184,7 @@ apis:
   - type: Email
     url: mailto:info@rcsb.org
 common:
-- type: JSONLd
+- type: JSONLD
   url: json-ld/pdb.json
 - type: Website
   url: https://www.rcsb.org
