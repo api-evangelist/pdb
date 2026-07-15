@@ -184,6 +184,8 @@ apis:
   - type: Email
     url: mailto:info@rcsb.org
 common:
+- type: AgenticAccess
+  url: agentic-access/pdb-agentic-access.yml
 - type: DomainSecurity
   url: security/pdb-domain-security.yml
 - type: JSONLD
