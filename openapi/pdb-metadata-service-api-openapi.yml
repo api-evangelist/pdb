@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  version: 0.9.12
+  title: ModelServer General Metadata Service API
+  description: The ModelServer is a service for accessing subsets of macromolecular model data.
+tags:
+- name: Metadata Service
+paths:
+  /rcsbsearch/v2/metadata/unreleased/schema:
+    get:
+      tags:
+      - Metadata Service
+      summary: Get RCSB PDB unreleased entry schema.
+      operationId: getUnreleasedEntryMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JsonNode'
+  /rcsbsearch/v2/metadata/schema:
+    get:
+      tags:
+      - Metadata Service
+      summary: Get RCSB PDB structure data schema as JSON Schema.
+      operationId: getMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JsonNode'
+  /rcsbsearch/v2/metadata/chemical/schema:
+    get:
+      tags:
+      - Metadata Service
+      summary: Get RCSB PDB chemical data schema as JSON Schema.
+      operationId: getChemicalMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JsonNode'
+components:
+  schemas:
+    JsonNode:
+      type: object

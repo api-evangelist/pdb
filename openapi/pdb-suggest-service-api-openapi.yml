@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  version: 0.9.12
+  title: ModelServer General Suggest Service API
+  description: The ModelServer is a service for accessing subsets of macromolecular model data.
+tags:
+- name: Suggest Service
+paths:
+  /rcsbsearch/v2/suggest:
+    get:
+      tags:
+      - Suggest Service
+      summary: Provides auto-complete/search-as-you-type functionality.
+      operationId: getSuggestions
+      parameters:
+      - name: json
+        in: query
+        description: Suggest query. Must be URL-encoded.
+        required: true
+        schema:
+          $ref: schema/suggest/request/json-schema-rcsb_suggest.json
+      responses:
+        '200':
+          description: "OK.\n Request has succeeded."
+          content:
+            application/json:
+              schema:
+                $ref: schema/suggest/response/json-schema-rcsb_suggest_results.json
+        '500':
+          description: "Internal Server Error.\n The server encountered unexpected error"
+          content:
+            application/json:
+              schema:
+                type: object
+        '204':
+          description: "No Content.\n The server successfully processed the request and did not return any results"
+          content:
+            application/json:
+              schema:
+                type: object
