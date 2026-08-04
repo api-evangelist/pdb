@@ -1,0 +1,20 @@
+{
+  "provider": "pdb",
+  "sources": [
+    "pdb-general-api-openapi.yml",
+    "pdb-metadata-service-api-openapi.yml",
+    "pdb-search-service-api-openapi.yml",
+    "pdb-suggest-service-api-openapi.yml"
+  ],
+  "outputs": [
+    "pdb-general-api-openapi.yml",
+    "pdb-metadata-service-api-openapi.yml",
+    "pdb-search-service-api-openapi.yml",
+    "pdb-suggest-service-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
