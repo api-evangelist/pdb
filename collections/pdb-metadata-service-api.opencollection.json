@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ModelServer General Metadata Service API",
+    "version": "0.9.12"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get RCSB PDB unreleased entry schema.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcsbsearch/v2/metadata/unreleased/schema"
+          },
+          "docs": "Get RCSB PDB unreleased entry schema."
+        },
+        {
+          "info": {
+            "name": "Get RCSB PDB structure data schema as JSON Schema.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcsbsearch/v2/metadata/schema"
+          },
+          "docs": "Get RCSB PDB structure data schema as JSON Schema."
+        },
+        {
+          "info": {
+            "name": "Get RCSB PDB chemical data schema as JSON Schema.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcsbsearch/v2/metadata/chemical/schema"
+          },
+          "docs": "Get RCSB PDB chemical data schema as JSON Schema."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

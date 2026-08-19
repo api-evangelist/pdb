@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ModelServer General Search Service API",
+    "version": "0.9.12"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Released data search API endpoint allows you to perform GET requests with textual and scientific searches against current RCSB PDB entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcsbsearch/v2/query",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query",
+                "description": "Search query. Must be URL-encoded."
+              }
+            ]
+          },
+          "docs": "Released data search API endpoint allows you to perform GET requests with textual and scientific searches against current RCSB PDB entries"
+        },
+        {
+          "info": {
+            "name": "Released data search API endpoint allows you to perform POST requests with textual and scientific searches against current RCSB PDB entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rcsbsearch/v2/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Released data search API endpoint allows you to perform POST requests with textual and scientific searches against current RCSB PDB entries"
+        },
+        {
+          "info": {
+            "name": "Unreleased data search API endpoint allows you to perform GET requests with textual searches against RCSB PDB unreleased entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcsbsearch/v2/query/unreleased",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query",
+                "description": "Search query. Must be URL-encoded."
+              }
+            ]
+          },
+          "docs": "Unreleased data search API endpoint allows you to perform GET requests with textual searches against RCSB PDB unreleased entries"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

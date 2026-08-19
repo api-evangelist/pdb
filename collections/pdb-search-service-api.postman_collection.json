@@ -1,0 +1,1332 @@
+{
+  "item": [
+    {
+      "id": "f4c0490d-d97f-42d3-a5fa-a2b51a88cfcb",
+      "name": "Search Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d587710b-ee24-4389-a464-224171a6d915",
+          "name": "Released data search API endpoint allows you to perform GET requests with textual and scientific searches against current RCSB PDB entries",
+          "request": {
+            "name": "Released data search API endpoint allows you to perform GET requests with textual and scientific searches against current RCSB PDB entries",
+            "description": {},
+            "url": {
+              "path": [
+                "rcsbsearch",
+                "v2",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec",
+                  "description": "(Required) Search query. Must be URL-encoded."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaecfa30-51ad-4de0-9ad7-946bfd3c78b4",
+              "name": "OK.\n Request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53d539a7-fbb7-42ea-a49e-756f4c39e80d",
+              "name": "No Content.\n The server successfully processed the request and did not return any results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "144eb15b-8072-424c-9b80-a3171d72a1ba",
+              "name": "Bad Request.\n The server cannot process the request due to malformed request or invalid query syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d6930e0-fbe2-4bb5-9656-d6eb3630363b",
+              "name": "Not found.\n The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c07686e8-a6ed-41c7-98f2-56b50f48e0aa",
+              "name": "Request Timeout.\n The server did not receive complete results within the time that it was prepared to wait",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbb1a1dc-17ef-4023-9869-c0634b547dca",
+              "name": "Unsupported Media Type.\n The server refuses to accept the request because the payload format is in an unsupported format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adeda3aa-1be6-4323-8e12-598eed672bd9",
+              "name": "Internal Server Error.\n The server encountered unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02d7e691-f79f-460b-a5da-59d7b85ae7bb",
+              "name": "Not Implemented.\n The server does not support the functionality required to fulfill the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dadcb80f-dde2-4683-beb7-9379c6f3ecdb",
+              "name": "Service Unavailable.\n The server is currently unable to handle the request due to a temporary overloading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/search/request/json-schema-rcsb_search_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "215176b2-d77b-44ad-896e-d39867c8b9a4",
+          "name": "Released data search API endpoint allows you to perform POST requests with textual and scientific searches against current RCSB PDB entries",
+          "request": {
+            "name": "Released data search API endpoint allows you to perform POST requests with textual and scientific searches against current RCSB PDB entries",
+            "description": {},
+            "url": {
+              "path": [
+                "rcsbsearch",
+                "v2",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79769887-c2a8-4c91-a232-b8189b3db187",
+              "name": "OK.\n Request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2a27296-3ae4-43ef-b8de-31f0a0b07a42",
+              "name": "No Content.\n The server successfully processed the request and did not return any results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e718719-623e-4dcf-93c6-1975edf44abc",
+              "name": "Bad Request.\n The server cannot process the request due to malformed request or invalid query syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf24645a-3fff-4149-b661-c9dae4e40dae",
+              "name": "Not found.\n The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82e3b122-18c0-482a-92ce-f8311b0049e5",
+              "name": "Request Timeout.\n The server did not receive complete results within the time that it was prepared to wait",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "867543fc-03d9-45ae-bd1f-bd34176e1f20",
+              "name": "Unsupported Media Type.\n The server refuses to accept the request because the payload format is in an unsupported format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be099472-940a-4614-85d0-43f3587bfcc6",
+              "name": "Internal Server Error.\n The server encountered unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a619d926-6904-41c9-8c34-23a5a44ec49c",
+              "name": "Not Implemented.\n The server does not support the functionality required to fulfill the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50ba2930-e7c6-4387-aeea-1d4d03aea026",
+              "name": "Service Unavailable.\n The server is currently unable to handle the request due to a temporary overloading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f5c8066-e886-47b0-a166-48c2948a6cd5",
+          "name": "Unreleased data search API endpoint allows you to perform GET requests with textual searches against RCSB PDB unreleased entries",
+          "request": {
+            "name": "Unreleased data search API endpoint allows you to perform GET requests with textual searches against RCSB PDB unreleased entries",
+            "description": {},
+            "url": {
+              "path": [
+                "rcsbsearch",
+                "v2",
+                "query",
+                "unreleased"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec",
+                  "description": "(Required) Search query. Must be URL-encoded."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e8849cd-def4-4deb-8e9a-ad212cba29c6",
+              "name": "OK.\n Request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5761147-0493-4c7e-9b79-ba6eb0ac1ca5",
+              "name": "No Content.\n The server successfully processed the request and did not return any results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01cd42d2-cf38-463e-b3c5-f5d6c8684297",
+              "name": "Bad Request.\n The server cannot process the request due to malformed request or invalid query syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cc87e28-6284-4a91-9753-f2dc78ec5e84",
+              "name": "Not found.\n The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "267f64eb-9feb-4f2f-95c1-0f65bbe7b69b",
+              "name": "Request Timeout.\n The server did not receive complete results within the time that it was prepared to wait",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "607ccb84-4cb0-47eb-9337-75bbf74b21d6",
+              "name": "Unsupported Media Type.\n The server refuses to accept the request because the payload format is in an unsupported format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb3efbc5-8aa3-4d0c-8602-4cf767e0a70d",
+              "name": "Internal Server Error.\n The server encountered unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d698605e-b5cd-4439-a5da-0082c32590f0",
+              "name": "Not Implemented.\n The server does not support the functionality required to fulfill the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7366671-0955-4e9b-9fe7-f6d61f1b4fca",
+              "name": "Service Unavailable.\n The server is currently unable to handle the request due to a temporary overloading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "query",
+                    "unreleased"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/unreleased/request/json-schema-rcsb_unreleased_query.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f62f2d62-d603-4e6b-a0c2-1511adaff513",
+    "name": "ModelServer General Search Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ModelServer is a service for accessing subsets of macromolecular model data.",
+      "type": "text/plain"
+    }
+  }
+}

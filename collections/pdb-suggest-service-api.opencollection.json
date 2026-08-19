@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ModelServer General Suggest Service API",
+    "version": "0.9.12"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suggest Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Provides auto-complete/search-as-you-type functionality.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rcsbsearch/v2/suggest",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query",
+                "description": "Suggest query. Must be URL-encoded."
+              }
+            ]
+          },
+          "docs": "Provides auto-complete/search-as-you-type functionality."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "396d075f-69c3-4522-be51-bd7ae7915aeb",
+      "name": "Suggest Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2abaae0c-8bd8-4d0f-b2fb-fcca6a4ee77e",
+          "name": "Provides auto-complete/search-as-you-type functionality.",
+          "request": {
+            "name": "Provides auto-complete/search-as-you-type functionality.",
+            "description": {},
+            "url": {
+              "path": [
+                "rcsbsearch",
+                "v2",
+                "suggest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "reference schema/suggest/request/json-schema-rcsb_suggest.json not found in the OpenAPI spec",
+                  "description": "(Required) Suggest query. Must be URL-encoded."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a681cdbd-e209-4a99-bd45-6f6445d1b89f",
+              "name": "OK.\n Request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "suggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/suggest/request/json-schema-rcsb_suggest.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e5fac6c-0cd5-44f1-b11e-abd6565a402e",
+              "name": "No Content.\n The server successfully processed the request and did not return any results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "suggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/suggest/request/json-schema-rcsb_suggest.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9829479e-03fb-4f34-838c-d89b99057c40",
+              "name": "Internal Server Error.\n The server encountered unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rcsbsearch",
+                    "v2",
+                    "suggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "value",
+                      "value": "reference schema/suggest/request/json-schema-rcsb_suggest.json not found in the OpenAPI spec"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d63a332e-a623-4ece-9661-d20832e2d1ad",
+    "name": "ModelServer General Suggest Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ModelServer is a service for accessing subsets of macromolecular model data.",
+      "type": "text/plain"
+    }
+  }
+}
