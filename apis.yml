@@ -127,7 +127,8 @@ apis:
   description: The General API from RCSB PDB — 12 operation(s) for general.
   humanURL: https://data.rcsb.org
   baseURL: https://data.rcsb.org/rest/v1/core
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
