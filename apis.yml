@@ -6,6 +6,18 @@ description: RCSB Protein Data Bank (RCSB PDB) is a scientific data resource pro
   through a suite of programmatic APIs covering data retrieval, full-text and attribute
   search, sequence and structure similarity search, molecular model data access, volumetric
   electron density maps, sequence coordinate alignments, and structure alignment calculations.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: unknown
