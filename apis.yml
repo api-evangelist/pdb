@@ -103,6 +103,12 @@ apis:
   - UniProt
   - NCBI
   - GraphQL
+  - Annotation
+  tags_raw:
+  - Sequence Alignment
+  - UniProt
+  - NCBI
+  - GraphQL
   - Annotations
   properties:
   - type: Documentation
