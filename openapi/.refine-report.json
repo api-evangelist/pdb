@@ -1,10 +1,9 @@
 {
   "provider": "pdb",
   "sources": [
-    "pdb-general-api-openapi.yml",
-    "pdb-metadata-service-api-openapi.yml",
-    "pdb-search-service-api-openapi.yml",
-    "pdb-suggest-service-api-openapi.yml"
+    "_original/rcsb-pdb-model-server-api.json",
+    "_original/rcsb-pdb-search-api.json",
+    "_original/rcsb-pdb-volume-server-api.json"
   ],
   "outputs": [
     "pdb-general-api-openapi.yml",
@@ -15,6 +14,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rcsb-pdb-model-server-api.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "rcsb-pdb-search-api.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "rcsb-pdb-search-api.json: declared missing tag: Metadata Service",
+    "rcsb-pdb-search-api.json: declared missing tag: Search Service",
+    "rcsb-pdb-search-api.json: declared missing tag: Suggest Service",
+    "rcsb-pdb-volume-server-api.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "tag 'General' spans 2 source specs (rcsb-pdb-model-server-api.json, rcsb-pdb-volume-server-api.json): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "pdb-general-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pdb-metadata-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pdb-search-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pdb-suggest-service-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

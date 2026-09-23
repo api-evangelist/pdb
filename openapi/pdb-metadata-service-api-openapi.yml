@@ -1,8 +1,16 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: 0.9.12
-  title: ModelServer General Metadata Service API
-  description: The ModelServer is a service for accessing subsets of macromolecular model data.
+  title: RCSB Search Metadata Service API
+  description: Provides programmatic access to RCSB search API.
+  contact:
+    email: info@rcsb.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.6.0
+servers:
+- url: /
+  description: Default URL
 tags:
 - name: Metadata Service
 paths:
@@ -10,7 +18,7 @@ paths:
     get:
       tags:
       - Metadata Service
-      summary: Get RCSB PDB unreleased entry schema.
+      summary: Get RCSB PDB unreleased entry schema
       operationId: getUnreleasedEntryMetadata
       responses:
         '200':
@@ -27,7 +35,7 @@ paths:
     get:
       tags:
       - Metadata Service
-      summary: Get RCSB PDB structure data schema as JSON Schema.
+      summary: Get RCSB PDB structure data schema as JSON Schema
       operationId: getMetadata
       responses:
         '200':
@@ -44,7 +52,7 @@ paths:
     get:
       tags:
       - Metadata Service
-      summary: Get RCSB PDB chemical data schema as JSON Schema.
+      summary: Get RCSB PDB chemical data schema as JSON Schema
       operationId: getChemicalMetadata
       responses:
         '200':

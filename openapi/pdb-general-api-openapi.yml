@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: 0.9.12
-  title: ModelServer General API
-  description: The ModelServer is a service for accessing subsets of macromolecular model data.
+  title: Pdb General API
+  version: '1.0'
+  description: 'Operations tagged General across 2 of this provider''s published API definitions: rcsb-pdb-model-server-api.json, rcsb-pdb-volume-server-api.json. Each path carries the servers of the definition it was published in.'
 tags:
 - name: General
 paths:
@@ -10,7 +10,7 @@ paths:
     get:
       tags:
       - General
-      summary: Computes structural assembly.
+      summary: Computes structural assembly
       operationId: assembly
       parameters:
       - $ref: '#/components/parameters/id'
@@ -91,7 +91,7 @@ paths:
     post:
       tags:
       - General
-      summary: Computes structural assembly.
+      summary: Computes structural assembly
       operationId: assembly-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -172,7 +172,7 @@ paths:
     get:
       tags:
       - General
-      summary: Atoms satisfying the given criteria.
+      summary: Atoms satisfying the given criteria
       operationId: atoms
       parameters:
       - $ref: '#/components/parameters/id'
@@ -311,7 +311,7 @@ paths:
     post:
       tags:
       - General
-      summary: Atoms satisfying the given criteria.
+      summary: Atoms satisfying the given criteria
       operationId: atoms-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -396,7 +396,7 @@ paths:
     get:
       tags:
       - General
-      summary: The full structure.
+      summary: The full structure
       operationId: full
       parameters:
       - $ref: '#/components/parameters/id'
@@ -469,7 +469,7 @@ paths:
     post:
       tags:
       - General
-      summary: The full structure.
+      summary: The full structure
       operationId: full-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -549,7 +549,7 @@ paths:
     get:
       tags:
       - General
-      summary: Coordinates of the first group satisfying the given criteria.
+      summary: Coordinates of the first group satisfying the given criteria
       operationId: ligand
       parameters:
       - $ref: '#/components/parameters/id'
@@ -688,7 +688,7 @@ paths:
     post:
       tags:
       - General
-      summary: Coordinates of the first group satisfying the given criteria.
+      summary: Coordinates of the first group satisfying the given criteria
       operationId: ligand-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -773,7 +773,7 @@ paths:
     get:
       tags:
       - General
-      summary: Identifies all residues within the given radius from the source residue. Takes crystal symmetry into account.
+      summary: Identifies all residues within the given radius from the source residue.
       operationId: residueInteraction
       parameters:
       - $ref: '#/components/parameters/id'
@@ -927,7 +927,7 @@ paths:
     post:
       tags:
       - General
-      summary: Identifies all residues within the given radius from the source residue. Takes crystal symmetry into account.
+      summary: Identifies all residues within the given radius from the source residue.
       operationId: residueInteraction-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1013,7 +1013,7 @@ paths:
     get:
       tags:
       - General
-      summary: Identifies all residues within the given radius from the source residue.
+      summary: Identifies all residues within the given radius from the source residue
       operationId: residueSurroundings
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1160,7 +1160,7 @@ paths:
     post:
       tags:
       - General
-      summary: Identifies all residues within the given radius from the source residue.
+      summary: Identifies all residues within the given radius from the source residue
       operationId: residueSurroundings-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1246,7 +1246,7 @@ paths:
     get:
       tags:
       - General
-      summary: Identifies (complete) ligands within the given radius from the source atom set. Takes crystal symmetry into account.
+      summary: Identifies (complete) ligands within the given radius from the source atom set.
       operationId: surroundingLigands
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1407,7 +1407,7 @@ paths:
     post:
       tags:
       - General
-      summary: Identifies (complete) ligands within the given radius from the source atom set. Takes crystal symmetry into account.
+      summary: Identifies (complete) ligands within the given radius from the source atom set.
       operationId: surroundingLigands-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1493,7 +1493,7 @@ paths:
     get:
       tags:
       - General
-      summary: Computes crystal symmetry mates within the specified radius.
+      summary: Computes crystal symmetry mates within the specified radius
       operationId: symmetryMates
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1574,7 +1574,7 @@ paths:
     post:
       tags:
       - General
-      summary: Computes crystal symmetry mates within the specified radius.
+      summary: Computes crystal symmetry mates within the specified radius
       operationId: symmetryMates-post
       parameters:
       - $ref: '#/components/parameters/id'
@@ -1655,7 +1655,7 @@ paths:
     get:
       tags:
       - General
-      summary: Executes multiple queries at the same time and writes them as separate data blocks.
+      summary: Executes multiple queries at the same time and writes them as separate data…
       operationId: query-many
       parameters:
       - name: query
@@ -1675,7 +1675,7 @@ paths:
     post:
       tags:
       - General
-      summary: Executes multiple queries at the same time and writes them as separate data blocks.
+      summary: Executes multiple queries at the same time and writes them as separate data…
       operationId: query-many-post
       parameters: []
       requestBody:
@@ -1706,7 +1706,7 @@ paths:
     get:
       tags:
       - General
-      summary: Returns a JSON response specifying if data is available and the maximum region that can be queried.
+      summary: Returns a JSON response specifying if data is available and the maximum region…
       operationId: getInfo
       parameters:
       - $ref: '#/components/parameters/source'
@@ -1722,7 +1722,7 @@ paths:
     get:
       tags:
       - General
-      summary: Returns density data inside the specified box for the given entry. For X-ray data, returns 2Fo-Fc and Fo-Fc volumes in a single response.
+      summary: Returns density data inside the specified box for the given entry.
       operationId: getBox
       parameters:
       - $ref: '#/components/parameters/source'
@@ -1766,7 +1766,7 @@ paths:
     get:
       tags:
       - General
-      summary: Returns (downsampled) volume data for the entire "data cell". For X-ray data, returns unit cell of 2Fo-Fc and Fo-Fc volumes, for EM data returns everything.
+      summary: Returns (downsampled) volume data for the entire "data cell".
       operationId: getCell
       parameters:
       - $ref: '#/components/parameters/source'
@@ -1789,6 +1789,14 @@ components:
       schema:
         type: string
       style: simple
+    id_2:
+      name: id
+      in: path
+      description: Id of the entry. For x-ray, use PDB ID (i.e. 1cbs) and for em use EMDB id (i.e. emd-8116).
+      required: true
+      schema:
+        type: string
+      style: simple
     encoding:
       name: encoding
       in: query
@@ -1799,21 +1807,6 @@ components:
         - cif
         - bcif
       style: form
-    detail:
-      name: detail
-      in: query
-      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
-      schema:
-        type: integer
-      style: form
-    id_2:
-      name: id
-      in: path
-      description: Id of the entry. For x-ray, use PDB ID (i.e. 1cbs) and for em use EMDB id (i.e. emd-8116).
-      required: true
-      schema:
-        type: string
-      style: simple
     source:
       name: source
       in: path
@@ -1825,6 +1818,13 @@ components:
         - x-ray
         - em
       style: simple
+    detail:
+      name: detail
+      in: query
+      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
+      schema:
+        type: integer
+      style: form
   schemas:
     info:
       properties:
@@ -1899,3 +1899,6 @@ components:
                 items:
                   type: number
                 description: Number of samples along each axis, in axisOrder
+x-refined-from:
+- rcsb-pdb-model-server-api.json
+- rcsb-pdb-volume-server-api.json
