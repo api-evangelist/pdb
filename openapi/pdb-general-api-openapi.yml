@@ -1797,6 +1797,13 @@ components:
       schema:
         type: string
       style: simple
+    detail:
+      name: detail
+      in: query
+      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
+      schema:
+        type: integer
+      style: form
     encoding:
       name: encoding
       in: query
@@ -1818,13 +1825,6 @@ components:
         - x-ray
         - em
       style: simple
-    detail:
-      name: detail
-      in: query
-      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
-      schema:
-        type: integer
-      style: form
   schemas:
     info:
       properties:
