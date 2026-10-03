@@ -1789,31 +1789,6 @@ components:
       schema:
         type: string
       style: simple
-    id_2:
-      name: id
-      in: path
-      description: Id of the entry. For x-ray, use PDB ID (i.e. 1cbs) and for em use EMDB id (i.e. emd-8116).
-      required: true
-      schema:
-        type: string
-      style: simple
-    detail:
-      name: detail
-      in: query
-      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
-      schema:
-        type: integer
-      style: form
-    encoding:
-      name: encoding
-      in: query
-      description: Determines if text based CIF or binary BinaryCIF encoding is used. An optional argument, default is BinaryCIF encoding.
-      schema:
-        type: string
-        enum:
-        - cif
-        - bcif
-      style: form
     source:
       name: source
       in: path
@@ -1825,6 +1800,31 @@ components:
         - x-ray
         - em
       style: simple
+    detail:
+      name: detail
+      in: query
+      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
+      schema:
+        type: integer
+      style: form
+    id_2:
+      name: id
+      in: path
+      description: Id of the entry. For x-ray, use PDB ID (i.e. 1cbs) and for em use EMDB id (i.e. emd-8116).
+      required: true
+      schema:
+        type: string
+      style: simple
+    encoding:
+      name: encoding
+      in: query
+      description: Determines if text based CIF or binary BinaryCIF encoding is used. An optional argument, default is BinaryCIF encoding.
+      schema:
+        type: string
+        enum:
+        - cif
+        - bcif
+      style: form
   schemas:
     info:
       properties:
