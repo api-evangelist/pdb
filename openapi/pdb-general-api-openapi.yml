@@ -1789,6 +1789,16 @@ components:
       schema:
         type: string
       style: simple
+    encoding:
+      name: encoding
+      in: query
+      description: Determines if text based CIF or binary BinaryCIF encoding is used. An optional argument, default is BinaryCIF encoding.
+      schema:
+        type: string
+        enum:
+        - cif
+        - bcif
+      style: form
     source:
       name: source
       in: path
@@ -1800,13 +1810,6 @@ components:
         - x-ray
         - em
       style: simple
-    detail:
-      name: detail
-      in: query
-      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
-      schema:
-        type: integer
-      style: form
     id_2:
       name: id
       in: path
@@ -1815,15 +1818,12 @@ components:
       schema:
         type: string
       style: simple
-    encoding:
-      name: encoding
+    detail:
+      name: detail
       in: query
-      description: Determines if text based CIF or binary BinaryCIF encoding is used. An optional argument, default is BinaryCIF encoding.
+      description: 'Determines the maximum number of voxels the query can return. Possible values are in the range from 0 (0.52M voxels) to 6 (25.17M voxels). Default value is 0. Note: different detail levels might lead to the same result.'
       schema:
-        type: string
-        enum:
-        - cif
-        - bcif
+        type: integer
       style: form
   schemas:
     info:
