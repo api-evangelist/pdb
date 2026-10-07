@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-13 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-13'
 specification: FinOps Framework
 specificationVersion: '1.0'
 alignedWith:
@@ -173,13 +178,10 @@ apis:
 unitEconomics:
   - name: Cost per 1K API Requests (internal infra)
     metric: internal_infra_cost / (api_requests / 1000)
-    target: minimize
   - name: Cost per GB Downloaded
     metric: egress_cost / data_download_gb
-    target: minimize
   - name: Structures Cached per GB Storage
     metric: structure_files_cached / storage_gb
-    target: maximize
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
