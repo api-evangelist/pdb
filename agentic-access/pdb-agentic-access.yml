@@ -1,17 +1,18 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/rcsb-pdb-model-server-api.json, openapi/rcsb-pdb-search-api.json, openapi/rcsb-pdb-volume-server-api.json
+source: openapi/pdb-general-api-openapi.yml, openapi/pdb-metadata-service-api-openapi.yml, openapi/pdb-search-service-api-openapi.yml,
+  openapi/pdb-suggest-service-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 28
   by_action_class:
-    connected: 18
-    acting: 10
+    connected: 19
+    acting: 9
   by_consequence:
-    read: 18
-    write: 10
+    read: 19
+    write: 9
   human_in_the_loop_required: 0
 operations:
 - path: /v1/{id}/assembly
@@ -236,21 +237,15 @@ operations:
   method: post
   operationId: query-many-post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /rcsbsearch/v2/query
+      max-ttl: 3600
+    audit: none
+- path: /{source}/{id}/
   method: get
-  operationId: runJsonQueriesGet
+  operationId: getInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -258,25 +253,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /rcsbsearch/v2/query
-  method: post
-  operationId: runJsonQueriesPost
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /rcsbsearch/v2/suggest
+- path: /{source}/{id}/box/{a1,a2,a3}/{b1,b2,b3}/
   method: get
-  operationId: getSuggestions
+  operationId: getBox
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -284,9 +263,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /rcsbsearch/v2/query/unreleased
+- path: /{source}/{id}/cell/
   method: get
-  operationId: runUnreleasedEntryJsonQueries
+  operationId: getCell
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -324,9 +303,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /{source}/{id}/
+- path: /rcsbsearch/v2/query
   method: get
-  operationId: getInfo
+  operationId: runJsonQueriesGet
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -334,9 +313,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /{source}/{id}/box/{a1,a2,a3}/{b1,b2,b3}/
+- path: /rcsbsearch/v2/query
+  method: post
+  operationId: runJsonQueriesPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /rcsbsearch/v2/query/unreleased
   method: get
-  operationId: getBox
+  operationId: runUnreleasedEntryJsonQueries
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -344,9 +339,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /{source}/{id}/cell/
+- path: /rcsbsearch/v2/suggest
   method: get
-  operationId: getCell
+  operationId: getSuggestions
   x-agentic-access:
     action-class: connected
     consequence: read
