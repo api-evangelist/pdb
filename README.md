@@ -1,4 +1,4 @@
-# RCSB PDB (pdb)
+# RCSB PDB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,137 +66,130 @@
 
 RCSB Protein Data Bank (RCSB PDB) is a scientific data resource providing free, open access to the 3D structural data of biological macromolecules including proteins, nucleic acids, and complex assemblies. It serves researchers worldwide through a suite of programmatic APIs covering data retrieval, full-text and attribute search, sequence and structure similarity search, molecular model data access, volumetric electron density maps, sequence coordinate alignments, and structure alignment calculations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pdb/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pdb/refs/heads/main/apis.yml)
+**Areas:** Structural Biology · Proteomics · Bioinformatics · Genomics · Life Sciences · Open Data · Research · Macromolecules · Crystallography · NMR · Research Data
 
-## Scope
+## RCSB PDB on APIs.io
 
-- **Type:** Index
-- **Position:** Producer
-- **Access:** Open
+Everything profiled for RCSB PDB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pdb/](https://apis.io/providers/pdb/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Structural Biology
-- Proteomics
-- Bioinformatics
-- Genomics
-- Life Sciences
-- Open Data
-- Research
-- Macromolecules
-- Crystallography
-- NMR
+- [RCSB PDB Data API](https://apis.io/apis/pdb/rcsb-pdb-data-api/) — Provides structured access to the complete RCSB PDB holdings via REST and GraphQL interfaces. Given a known PDB identifier, callers can retrieve rich JSON…
+- [RCSB PDB Sequence Coordinates API](https://apis.io/apis/pdb/rcsb-pdb-sequence-coordinates-api/) — GraphQL service providing sequence-level alignments between structural databases and external sequence resources. Exposes two core queries — alignment and…
+- [RCSB PDB Structure Alignment API](https://apis.io/apis/pdb/rcsb-pdb-alignment-api/) — Asynchronous REST API that performs programmatic structure alignment calculations between PDB entries or user-supplied coordinate files. Callers submit an…
+- [RCSB PDB General API](https://apis.io/apis/pdb/pdb-general-api/) — The General API from RCSB PDB — 12 operation(s) for general.
+- [RCSB PDB Metadata Service API](https://apis.io/apis/pdb/pdb-metadata-service-api/) — The Metadata Service API from RCSB PDB — 3 operation(s) for metadata service.
+- [RCSB PDB Search Service API](https://apis.io/apis/pdb/pdb-search-service-api/) — The Search Service API from RCSB PDB — 2 operation(s) for search service.
+- [RCSB PDB Suggest Service API](https://apis.io/apis/pdb/pdb-suggest-service-api/) — The Suggest Service API from RCSB PDB — 1 operation(s) for suggest service.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### RCSB PDB Data API
+GraphQL schemas.
 
-Provides structured access to the complete RCSB PDB holdings via REST and GraphQL interfaces. Given a known PDB identifier, callers can retrieve rich JSON metadata about entries, polymer entities, non-polymer entities (ligands), polymer entity instances (chains), assemblies, branched entities, and chemical components.
+- [RCSB Protein Data Bank GraphQL API](https://apis.io/graphqls/pdb/pdb-graphql/)
 
-- **Human URL:** [https://data.rcsb.org](https://data.rcsb.org)
-- **Base URL:** `https://data.rcsb.org/rest/v1/core`
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://data.rcsb.org/redoc/index.html)
-- [GraphQL Endpoint](https://data.rcsb.org/graphql)
-- [GraphQL Explorer](https://data.rcsb.org/graphiql/index.html)
-- [Python SDK](https://github.com/rcsb/py-rcsb-api)
-- [JavaScript SDK](https://github.com/rcsb/rcsb-api-tools)
+- [Pdb Agentic Access](https://apis.io/agentic-access/pdb/pdb-agentic-access/)
 
-### RCSB PDB Search API
+#### Collections (4)
 
-Full-featured search API for locating PDB identifiers that match complex query conditions. Supports text attribute searches, BLAST-like sequence similarity (protein, DNA, RNA), chemical small-molecule queries (formula, SMILES, InChI), 3D structure embedding searches, sequence motif searches, structural motif searches, and unstructured full-text searches.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://search.rcsb.org](https://search.rcsb.org)
-- **Base URL:** `https://search.rcsb.org/rcsbsearch/v2/query`
+- [ModelServer General API](https://apis.io/collections/pdb/open-pdb-general-api/)
+- [ModelServer General Metadata Service API](https://apis.io/collections/pdb/open-pdb-metadata-service-api/)
+- [ModelServer General Search Service API](https://apis.io/collections/pdb/open-pdb-search-service-api/)
+- [ModelServer General Suggest Service API](https://apis.io/collections/pdb/open-pdb-suggest-service-api/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://search.rcsb.org/redoc/index.html)
-- [Getting Started](https://www.rcsb.org/docs/programmatic-access/web-apis-overview)
+Authentication, trust centre, and vulnerability disclosure.
 
-### RCSB PDB ModelServer API
+- [Pdb Domain Security](https://apis.io/security/pdb/pdb-domain-security/)
 
-Provides on-demand access to subsets of macromolecular model data stored in PDBx/mmCIF format. Callers can request individual chains, residue ranges, ligand environments, or symmetry-expanded assemblies without downloading full structure files.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://models.rcsb.org](https://models.rcsb.org)
-- **Base URL:** `https://models.rcsb.org`
+Published plans, tiers and prices.
 
-#### Properties
+- [Pdb Plans Pricing](https://apis.io/plans/pdb/pdb-plans-pricing/)
 
-- [Documentation](https://models.rcsb.org)
+#### Rate limits (1)
 
-### RCSB PDB VolumeServer API
+Published request limits.
 
-Delivers subsets of volumetric electron density and cryo-EM map data associated with PDB entries. Researchers can query a specific region around a ligand or residue and retrieve only the relevant density slice, accelerating interactive visualization.
+- [Pdb Rate Limits](https://apis.io/rate-limits/pdb/pdb-rate-limits/)
 
-- **Human URL:** [https://maps.rcsb.org](https://maps.rcsb.org)
-- **Base URL:** `https://maps.rcsb.org`
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://maps.rcsb.org)
+- [Pdb Finops](https://apis.io/finops/pdb/pdb-finops/)
 
-### RCSB PDB Sequence Coordinates API
+## Where to find this API
 
-GraphQL service providing sequence-level alignments between structural databases and external sequence resources. Exposes alignment and annotations queries enabling mapping of PDB chain positions to UniProt, NCBI RefSeq, CATH, SCOPe, and Computed Structure Models (CSMs).
-
-- **Human URL:** [https://sequence-coordinates.rcsb.org](https://sequence-coordinates.rcsb.org)
-- **Base URL:** `https://sequence-coordinates.rcsb.org/graphql`
-
-#### Properties
-
-- [Documentation](https://sequence-coordinates.rcsb.org)
-- [GraphQL Explorer](https://sequence-coordinates.rcsb.org/graphiql/index.html)
-
-### RCSB PDB Structure Alignment API
-
-Asynchronous REST API that performs programmatic structure alignment calculations between PDB entries or user-supplied coordinate files. Callers submit a job via POST /submit and poll GET /results with a UUID ticket for status and output.
-
-- **Human URL:** [https://alignment.rcsb.org](https://alignment.rcsb.org)
-- **Base URL:** `https://alignment.rcsb.org`
-
-#### Properties
-
-- [Documentation](https://alignment.rcsb.org/api-reference.html)
-- [Query Editor](https://alignment.rcsb.org/query-editor.html)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.rcsb.org)
 - [Documentation](https://www.rcsb.org/docs/programmatic-access/web-apis-overview)
-- [Getting Started](https://www.rcsb.org/docs/programmatic-access)
-- [File Downloads](https://files.wwpdb.org)
-- [GitHub](https://github.com/rcsb)
-- [Python SDK](https://github.com/rcsb/py-rcsb-api)
-- [JavaScript SDK](https://github.com/rcsb/rcsb-api-tools)
-- [Plans](plans/pdb-plans-pricing.yml) - API Commons Plans 0.1
-- [Rate Limits](rate-limits/pdb-rate-limits.yml) - API Commons Rate Limits 0.1
-- [FinOps](finops/pdb-finops.yml) - FOCUS-aligned FinOps Framework 1.0
-- [Contact](mailto:info@rcsb.org)
-- [Mailing List](https://groups.google.com/g/rcsb-pdb-api-announcements)
+- [Getting started](https://www.rcsb.org/docs/programmatic-access)
+- [Blog](https://www.rcsb.org/pages/news)
+- [Status](https://www.rcsb.org/pages/policies)
 
-## Plans
+## API Evangelist rating
 
-RCSB PDB APIs are freely available to all researchers and developers with no subscription fee, API key, or registration required. All API endpoints are rate-limited to ensure fair access across the global research community.
+**Kin Score 25.0** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-- **Open Access (Free)** - All six API services plus bulk file downloads at no cost. Recommended starting rate of a few requests per second. HTTP 429 returned when limits are exceeded. Static file downloads via HTTPS and rsync are unrestricted.
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 40.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 5.3 |
 
-## Rate Limits
+**Agent readiness 23.7** — agent-aware
 
-- No published numeric ceiling; a sustained rate of a few requests per second is recommended across all API endpoints.
-- HTTP 429 is returned when the limit is exceeded; clients should implement exponential backoff and honor Retry-After.
-- Static file downloads (https://files.wwpdb.org, rsync://rsync.rcsb.org) are not rate-limited.
-- Bulk workloads should prefer rsync for full archive replication and off-peak scheduling.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## Maintainers
+**Regulatory alignment 4.7** — Health
 
-**FN:** Kin Lane
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pdb/](https://apis.io/providers/pdb/).
 
-**Email:** kin@apievangelist.com
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for RCSB PDB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pdb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
